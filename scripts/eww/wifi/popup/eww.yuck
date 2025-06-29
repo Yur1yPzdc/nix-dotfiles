@@ -1,0 +1,24 @@
+(
+  defwindow wifi_popup
+  :monitor 0
+  :exclusive "false"
+  :stacking "fg"
+  :focusable "false"
+  :geometry
+  (geometry :anchor "top right" )
+  (wifi_popup_insides)
+)
+
+(
+  defwidget wifi_popup_insides [] 
+  (
+    box :class "wifi_popup" :space-evenly "true" 
+    (
+      button 
+      :class "button"
+      :vexpand "false"
+      :onclick "sh $HOME/.config/eww/close_popup.sh"
+      "Connected"
+    )
+  )
+)

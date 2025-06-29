@@ -1,0 +1,40 @@
+* { all: unset; }
+
+.wifi_box {
+    background-color: rgba($color: #1a1b23, $alpha: 1);
+    //border: 3px solid rgba($color: #a257fb, $alpha: 0);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.wifi_popup {
+    background-color: rgba($color: #1a1b23, $alpha: 1);
+    //border: 3px solid rgba($color: #a257fb, $alpha: 0);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 2px;
+}
+
+.button {
+    background-color: rgba($color: #1a1623, $alpha: 1);
+    padding: 2px;
+    margin-right: 4px;
+    margin-left: 10px;
+    border-radius: 4px;
+}
+
+//.button:hover {
+//    background-color: #222;
+//}
+//
+//.button:active {
+//    background-color: #111;
+//}
+//
+//.exit:hover {
+//    color: #f66;
+//}
+
+.exit, .button {
+    transition: all 0.2s ease;
+}

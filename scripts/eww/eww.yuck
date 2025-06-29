@@ -1,0 +1,35 @@
+(
+  defwindow wifi_box
+  :monitor 0
+  :stacking "fg"
+  :exclusive "false"
+  :focusable "false"
+  :geometry 
+  ( geometry 
+    :anchor "top right"
+    :x "110"
+    :y "-20"
+  )
+  (
+    wifi_insides
+  )
+)
+
+(
+  defwidget wifi_insides [] 
+  (
+    box :class "wifi_box" :space-evenly "true" 
+    (
+      button 
+      :class "button"
+      :vexpand "false"
+      :onclick "sh $HOME/.config/eww/launch.sh"
+      (image 
+        :path "/home/yuri/pizdec/w.svg"
+        :image-width "16"
+        :image-height "16"
+      )
+    )
+  )
+)
+
