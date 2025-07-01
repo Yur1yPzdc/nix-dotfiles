@@ -5,9 +5,8 @@
 3. Depending on how you managed your disk boot partition, copy boot-related lines from the configuration in /etc/nixos into this one. Those have worked on my first machine
 4. Run ' nixos-rebuild switch '. This one is for enabling flakes
 5. Run ' nixos-rebuild switch --flake ~/nixos-config && home-manager switch --flake ~/nixos-config ' 
-6. (TODO: refactor the repo scripts and bg folders)
-7. To enable proxy (for russians) for browser and discord run ' nix-shell -p gnumake gcc ', then ' cd scripts/wifi/proxy && make ', then ' cp ciadpi ../ciadpi && cd .. && rm -rf proxy'. To actually enable it run run.sh (port 1080)
-8. (TODO: stuff with waybar and eww)
+6. To enable proxy (for russians) for browser and discord run ' nix-shell -p gnumake gcc ', then ' git clone https://github.com/hufrea/byedpi.git && make ', then ' cp ciadpi ../ciadpi && cd .. && rm -rf proxy'. To actually enable it run run.sh (port 1080)
+7. (TODO: stuff with waybar and eww)
 
 
 # TODO
