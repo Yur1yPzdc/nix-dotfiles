@@ -29,7 +29,7 @@
     };
   
     homeConfigurations.yuri = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages."x86_64-linux".extend nur.overlay;
+      pkgs = nixpkgs.legacyPackages."x86_64-linux".extend nur.overlays.default;
       modules = [ ./home-manager/home.nix ];
     };
   };
