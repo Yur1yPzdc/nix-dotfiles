@@ -11,9 +11,9 @@
 
 
 # TODO
-[] refactor repo folder structure to better automate install process
-[] remake ciadpi compiling script to compile into previous folder
-[] understand proxy usage in configuration.nix
-[] resolve the warning about nixvim 
-[] rewrite and refactor eww folder and box to actually work
-[] rewrite waybar (battery not visible if not laptop => pizdec)
+- [ ] refactor repo folder structure to better automate install process
+- [ ] remake ciadpi compiling script to compile into previous folder
+- [ ] understand proxy usage in configuration.nix
+- [ ] resolve the warning about nixvim 
+- [ ] rewrite and refactor eww folder and box to actually work
+- [ ] rewrite waybar (battery not visible if not laptop => pizdec)
