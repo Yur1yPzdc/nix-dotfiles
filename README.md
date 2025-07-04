@@ -1,5 +1,5 @@
 # Instruction for installation
-! note: do the steps below *after* installing any (minimal i guess) nixos 64 bit system
+! note: do the steps below *after* installing any (minimal i guess) nixos 64 bit system; MAKE SURE YOU INSTALLED GIT or run ` nix-shell -p git `
 1. Clone this repository into your future nixos config folder. Mine is ~/nixos-config (from here now it is nixos-config)
 2. Insert your hardware-configuration.nix to nixos-config
 3. Depending on how you managed your disk boot partition, copy boot-related lines from the configuration in /etc/nixos into this one. Those have worked on my first machine
