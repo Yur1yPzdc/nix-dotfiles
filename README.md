@@ -77,5 +77,8 @@ To get started with this setup, follow these steps:
 - You can exit nix-shell with `exit`. To instantiate it to work like [GoodByeDPI](https://github.com/ValdikSS/GoodbyeDPI) run `sh proxy.sh`
 - **NOTE:** upon Hyprland initialization `/scripts/wifi/proxy.sh` will be executed automatically, so don't run it manually
 
+  4.4 **Remember to:**
+- Create user password as root either imperatively (booo!) `passwd username` or run `mkpasswd [your password] >> [your directory]/configuration.nix`, open `configuration.nix`, edit last line to look like `hashedPassword = "[that line]";` and move it right under `extraGroups = [ "wheel" "networkmanager" "input" ];` 
+
 ## 🤝 Contributions
 🎨 If you have stumbled upon great touhou-related artwork that can be used as a wallpaper feel free to recommend adding it into this config
