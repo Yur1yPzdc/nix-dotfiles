@@ -77,5 +77,5 @@ To get started with this setup, follow these steps:
 - You can exit nix-shell with `exit`. To instantiate it to work like [GoodByeDPI](https://github.com/ValdikSS/GoodbyeDPI) run `sh proxy.sh`
 - **NOTE:** upon Hyprland initialization `/scripts/wifi/proxy.sh` will be executed automatically, so don't run it manually
 
-# 🤝 Contributions
+## 🤝 Contributions
 🎨 If you have stumbled upon great touhou-related artwork that can be used as a wallpaper feel free to recommend adding it into this config
