@@ -1,16 +1,81 @@
-# Instruction for installation
-! note: do the steps below *after* installing any (minimal i guess) nixos 64 bit system 
-!MAKE SURE you installed git or run ` nix-shell -p git ` 
-ALSO! make sure you have internet connection (wired = automatically; wireless -> configure wpa_supplicant and wpa_cli)
-1. Clone this repository into your future nixos config folder. Mine is ~/nixos-config (from here now it is nixos-config)
-2. Insert your hardware-configuration.nix to nixos-config
-3. Depending on how you managed your disk boot partition, copy boot-related lines from the configuration in /etc/nixos into this one. Those have worked on my first machine
-4. Run ` nixos-rebuild switch `. This one is for enabling flakes
-5. Run ` nixos-rebuild switch --flake ~/nixos-config && home-manager switch --flake ~/nixos-config ` 
-6. To enable proxy (for russians) for browser and discord run ` nix-shell -p gnumake gcc `, then ` mkdir proxy && git clone https://github.com/hufrea/byedpi.git ./proxy && cd proxy && make `, then ` cp ciadpi ../ciadpi && cd .. && rm -rf proxy `. To actually enable it run run.sh (port 1080)
-7. (TODO: stuff with waybar and eww)
+# ❄️ Yur1yPzdc' NixOS Config
 
+## 🚀 Installation
 
-# TODO
-- [ ] rewrite and refactor eww folder and box to actually work
-- [ ] rewrite waybar (battery not visible if not laptop => pizdec)
+To get started with this setup, follow these steps:
+
+1. **Install NixOS**
+   
+   Recommended settings:
+- x86-64_linux system with UEFI boot ~because i hate MBR~
+- minimal no GUI installation
+- Included packages: git, vim
+- Enable wireless internet via wpa_supplicant
+- Create your future user, a default one. Either name it `yuri` or as you want, but follow 2 then
+
+2. **NOTE**
+- The only user that will be on the system is `yuri`. Follow 4.2 to remake it to your user
+
+3. **Setup**
+- Clone the repo into your future config directory: `git clone https://github.com/Yur1yPzdc/nix-dotfiles [name of your directory]`. Mine is `/home/yuri/nixos-config`
+- Run `cp /etc/hardware_configuration.nix [your directory name]/hardware_configuration.nix` to insert hardware_configuration.nix file to config
+- Replace version-related lines in `configuration.nix` and `/home-manager/home.nix` to your installed nixos version. The one in the name of ISO you have installed
+```diff
+-- stateVersion = "24.05";
+++ stateVersion = "[your stateVersion]";
+```
+- Run `sudo nixos-rebuild switch --experimental-features 'nix-command flakes'` to enable flakes
+- Run `nixos-rebuild switch --flake ~/nixos-config && home-manager switch --flake ~/nixos-config` to finish the install process
+
+4. **Extras**
+  
+  4.1 **Included shortcuts**
+- `rebuild = sudo nixos-rebuild switch --flake $HOME/[your directory name]`
+- `hmswitch = home-manager switch --flake $HOME/[your directory name]`
+- `v, vi, vim = nvim`
+
+4.2 **Creating with non-yuri user**
+- Rename all of those listed below. Easier done with vim hotkeys: `:%s/yuri/username/g`
+
+`configuration.nix`
+```diff
+-- configFile.path = "/home/yuri/scripts/wifi/wpa_supplicant.nix";
+++ configFile.path = "/home/username/scripts/wifi/wpa_supplicant.nix";
+
+-- users.users.yuri = {
+++ users.users.username = {
+
+-- services.getty.autoLoginUser = "yuri";
+++ services.getty.autoLoginUser = "username";
+```
+
+`/home-manager/home.nix`
+```diff
+-- username = "yuri";
+++ username = "username";
+
+-- homeDirectory = "/home/yuri";
+++ homeDirectory = "/home/username";
+```
+
+`flake.nix`
+```diff
+-- homeConfigurations.yuri = home-manager.lib.homeManagerConfiguration {
+++ homeConfigurations.username = home-manager.lib.homeManagerConfiguration {
+```
+
+`hyprland.nix`
+```diff
+-- "$secMod,  B, exec, sh /home/yuri/bg/bg.sh"
+++ "$secMod,  B, exec, sh /home/username/bg/bg.sh"
+```
+
+  4.3 **Creating local proxy**
+- Run `nix-shell -p gcc gnumake`
+- Then run `sh create_proxy.sh` from `/scripts/wifi`
+- This creates `ciadpi` - a local SOCKS5 proxy server in `/scripts/wifi` which can be later run to instantiate it 
+- You can exit nix-shell with `exit`. To instantiate it to work like [GoodByeDPI](https://github.com/ValdikSS/GoodbyeDPI) run `sh proxy.sh`
+- **NOTE:** upon Hyprland initialization `/scripts/wifi/proxy.sh` will be executed automatically, so don't run it manually
+
+## 🤝 Contributions
+🎨 If you have stumbled upon great touhou-related artwork that can be used as a wallpaper feel free to recommend adding it into this config
