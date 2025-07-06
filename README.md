@@ -33,7 +33,8 @@ To get started with this setup, follow these steps:
 - `v, vi, vim = nvim`
 
   4.2 **Creating with non-yuri user**
-- Rename all of those listed below. Easier done with vim hotkeys: `:%s/yuri/username/g`  
+- Rename all of those listed below. Easier done with vim hotkeys: `:%s/yuri/username/g`
+
 `configuration.nix`
 ```diff
 -- configFile.path = "/home/yuri/scripts/wifi/wpa_supplicant.nix";
