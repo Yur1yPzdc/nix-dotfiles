@@ -26,11 +26,13 @@ To get started with this setup, follow these steps:
 - Run `nixos-rebuild switch --flake ~/nixos-config && home-manager switch --flake ~/nixos-config` to finish the install process
 
 4. **Extras**
-4.1 **Included shortcuts**
+  
+  4.1 **Included shortcuts**
 - `rebuild = sudo nixos-rebuild switch --flake $HOME/[your directory name]`
 - `hmswitch = home-manager switch --flake $HOME/[your directory name]`
 - `v, vi, vim = nvim`
-4.2 **Creating with non-yuri user**
+
+  4.2 **Creating with non-yuri user**
 - Rename all of those listed below. Easier done with vim hotkeys: `:%s/yuri/username/g`
 `configuration.nix`
 ```diff
@@ -65,7 +67,7 @@ To get started with this setup, follow these steps:
 ++ "$secMod,  B, exec, sh /home/username/bg/bg.sh"
 ```
 
-4.3 **Creating local proxy**
+  4.3 **Creating local proxy**
 - Run `nix-shell -p gcc gnumake`
 - Then run `sh create_proxy.sh` from `/scripts/wifi`
 - This creates `ciadpi` - a local SOCKS5 proxy server in `/scripts/wifi' which can be later run to instantiate it 
