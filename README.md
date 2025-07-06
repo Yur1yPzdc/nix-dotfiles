@@ -4,7 +4,9 @@
 
 To get started with this setup, follow these steps:
 
-1. **Install NixOS** Recommended settings:
+1. **Install NixOS**
+   
+   Recommended settings:
 - x86-64_linux system with UEFI boot ~because i hate MBR~
 - minimal no GUI installation
 - Included packages: git, vim
@@ -17,7 +19,7 @@ To get started with this setup, follow these steps:
 3. **Setup**
 - Clone the repo into your future config directory: `git clone https://github.com/Yur1yPzdc/nix-dotfiles [name of your directory]`. Mine is `nixos-config`
 - Run `cp /etc/hardware_configuration.nix [your directory name]/hardware_configuration.nix` to insert hardware_configuration.nix file to config
-- Replace version-related lines in `configuration.nix` and `/home-manager/home.nix` to your installed nixos version. The one in the name of ISO
+- Replace version-related lines in `configuration.nix` and `/home-manager/home.nix` to your installed nixos version. The one in the name of ISO you have installed
 ```diff
 -- stateVersion = "24.05";
 ++ stateVersion = "[your stateVersion]";
@@ -32,7 +34,7 @@ To get started with this setup, follow these steps:
 - `hmswitch = home-manager switch --flake $HOME/[your directory name]`
 - `v, vi, vim = nvim`
 
-  4.2 **Creating with non-yuri user**
+4.2 **Creating with non-yuri user**
 - Rename all of those listed below. Easier done with vim hotkeys: `:%s/yuri/username/g`
 
 `configuration.nix`
