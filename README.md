@@ -18,14 +18,14 @@ To get started with this setup, follow these steps:
 
 3. **Setup**
 - Clone the repo into your future config directory: `git clone https://github.com/Yur1yPzdc/nix-dotfiles [name of your directory]`. Mine is `/home/yuri/nixos-config`
-- Run `cp /etc/nixos/hardware_configuration.nix [your directory name]/hardware_configuration.nix` to insert hardware_configuration.nix file to config
+- Run `cp /etc/nixos/hardware_configuration.nix [your directory name]/hardware-configuration.nix` to insert hardware-configuration.nix file to config
 - Replace version-related lines in `configuration.nix` and `/home-manager/home.nix` to your installed nixos version. The one in the name of ISO you have installed
 ```diff
 -- stateVersion = "24.05";
 ++ stateVersion = "[your stateVersion]";
 ```
 - Run `sudo nixos-rebuild switch --experimental-features 'nix-command flakes'` to enable flakes
-- Run `nixos-rebuild switch --flake ~/nixos-config && home-manager switch --flake ~/nixos-config` to finish the install process
+- Run `rm -rf .git && nixos-rebuild switch --flake ~/nixos-config && home-manager switch --flake ~/nixos-config` to finish the install process
 
 4. **Extras**
   
