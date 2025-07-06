@@ -70,14 +70,14 @@ To get started with this setup, follow these steps:
 ++ "$secMod,  B, exec, sh /home/username/bg/bg.sh"
 ```
 
-  4.3 **Creating local proxy**
+4.3 **Creating local proxy**
 - Run `nix-shell -p gcc gnumake`
 - Then run `sh create_proxy.sh` from `/scripts/wifi`
 - This creates `ciadpi` - a local SOCKS5 proxy server in `/scripts/wifi` which can be later run to instantiate it 
 - You can exit nix-shell with `exit`. To instantiate it to work like [GoodByeDPI](https://github.com/ValdikSS/GoodbyeDPI) run `sh proxy.sh`
 - **NOTE:** upon Hyprland initialization `/scripts/wifi/proxy.sh` will be executed automatically, so don't run it manually
 
-  4.4 **Remember to:**
+4.4 **Remember to:**
 - Create user password as root either imperatively (booo!) `passwd username` or run `mkpasswd [your password] >> [your directory]/configuration.nix`, open `configuration.nix`, edit last line to look like `hashedPassword = "[that line]";` and move it right under `extraGroups = [ "wheel" "networkmanager" "input" ];` 
 
 ## 🤝 Contributions
