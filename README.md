@@ -73,6 +73,6 @@ To get started with this setup, follow these steps:
   4.3 **Creating local proxy**
 - Run `nix-shell -p gcc gnumake`
 - Then run `sh create_proxy.sh` from `/scripts/wifi`
-- This creates `ciadpi` - a local SOCKS5 proxy server in `/scripts/wifi' which can be later run to instantiate it 
+- This creates `ciadpi` - a local SOCKS5 proxy server in `/scripts/wifi` which can be later run to instantiate it 
 - You can exit nix-shell with `exit`. To instantiate it to work like [GoodByeDPI](https://github.com/ValdikSS/GoodbyeDPI) run `sh proxy.sh`
 - **NOTE:** upon Hyprland initialization `/scripts/wifi/proxy.sh` will be executed automatically, so don't run it manually
