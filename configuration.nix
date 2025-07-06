@@ -3,7 +3,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hardware_configuration.nix
       ./nixvim/nixvim.nix
     ];
 
