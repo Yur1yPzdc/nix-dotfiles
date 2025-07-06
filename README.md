@@ -76,3 +76,6 @@ To get started with this setup, follow these steps:
 - This creates `ciadpi` - a local SOCKS5 proxy server in `/scripts/wifi` which can be later run to instantiate it 
 - You can exit nix-shell with `exit`. To instantiate it to work like [GoodByeDPI](https://github.com/ValdikSS/GoodbyeDPI) run `sh proxy.sh`
 - **NOTE:** upon Hyprland initialization `/scripts/wifi/proxy.sh` will be executed automatically, so don't run it manually
+
+# 🤝 Contributions
+🎨 If you have stumbled upon great touhou-related artwork that can be used as a wallpaper feel free to recommend adding it into this config
