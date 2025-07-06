@@ -9,5 +9,6 @@
     ./vimtex.nix
     ./texpresso.nix
     ./airline.nix
+    ./web-devicons.nix
   ];
 }
