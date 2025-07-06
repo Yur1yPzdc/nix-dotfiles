@@ -12,7 +12,7 @@ if [ "$v" -eq "10" ]; then
 fi
 echo $v $l
 
-ask="$HOME/.bg/$v.png"
+ask="$HOME/bg/$v.png"
 
 cat > $HOME/bg/.last_img << EOF1
 $v
