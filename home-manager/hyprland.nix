@@ -11,7 +11,7 @@
       "$mainMod" = "SUPER";
       "$secMod"  =   "ALT";
 
-      monitor = ",1920x1080@60,auto,1";
+      monitor = ",preferred,auto,1";
 
       env = [
         "XDG_CURRENT_DESKTOP,Hyprland"

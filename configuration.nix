@@ -7,14 +7,28 @@
       ./nixvim/nixvim.nix
     ];
 
-  # Insert boot-related stuff here
-
-
+  boot.loader = {
+    grub = {
+      enable = true;
+      efiSupport = true;
+      device = "nodev";
+      useOSProber = true;
+    };
+    efi.canTouchEfiVariables = true;
+    efi.efiSysMountPoint = "/boot";
+    timeout = null;
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   networking.hostName = "nixos"; # Define your hostname. Do not change unless you want to rewrite flake and home-manager
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.supplicant = {
+    "wlp60s0" = {
+      configFile.path = "/home/yuri/scripts/wifi/wpa_supplicant.conf";
+    };
+  };
+
 
   # Set your time zone.
   time.timeZone = "Europe/Moscow";
@@ -23,16 +37,14 @@
 
   fonts.packages = with pkgs; [
     jetbrains-mono
-    noto-fonts
-    noto-fonts-emoji
     twemoji-color-font
     font-awesome
     powerline-fonts
     powerline-symbols
     nerd-fonts.symbols-only
-    fira-code-symbols
     cascadia-code
     ipaexfont
+    kochi-substitute
   ];
 
   i18n = {
@@ -42,11 +54,6 @@
       ibus.engines = with pkgs.ibus-engines; [ mozc ];
     };
   };
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1:8085";
-  # Still do not know about that
 
   # Enable sound.
   services.pipewire = {
@@ -91,8 +98,7 @@
     # Uilities & stuff
     brightnessctl
     waybar
-    rofi
-    eww
+    #eww
     swww
     alacritty
     ffmpeg
@@ -111,21 +117,20 @@
     firefox
     xfce.thunar
     telegram-desktop
-    discord
-    CuboCore.corepdf
-    libresprite
-    urn-timer
-    obs-studio
-    vlc
-    gimp
-    # libsForQt5.kdenlive
+    # discord
+    apvlv
+    # libresprite
+    # urn-timer
+    # obs-studio
+    # vlc
+    # gimp
 
     # Gaming (Not needed)
     # gnugo
     # libsForQt5.kigo
     # retroarchFull
 
-    # Custom cursor???
+    # Custom cursor
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
 
