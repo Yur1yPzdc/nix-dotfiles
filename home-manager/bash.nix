@@ -7,8 +7,8 @@
       v = "nvim";
       vi = "nvim";
       vim = "nvim";
-      wifi = "sh ~/.wifi/wifi.sh";
-      ds-proxy = "nohup discord --proxy-server=socks5://127.0.0.1:1080 &";
+      # wifi = "sh ~/.wifi/wifi.sh";
+      # ds-proxy = "nohup discord --proxy-server=socks5://127.0.0.1:1080 &";
     };
   };
 }

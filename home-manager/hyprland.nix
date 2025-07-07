@@ -124,9 +124,9 @@
 
       exec-once = [
         "swww-daemon"
-        "sh $HOME/.bg/bg.sh"
+        "sh $HOME/nixos-config/bg/bg.sh"
         "waybar"
-        "sh $HOME/.wifi/run.sh"
+        "sh $HOME/nixos-config/scripts/wifi/run.sh"
         #"eww daemon"
         "eww open wifi_box"
       ];
@@ -140,7 +140,7 @@
         "$secMod,  Q, killactive,"
         "$secMod,  F, exec, firefox"
         "$secMod,  D, exec, rofi -show drun"
-        "$secMod,  B, exec, sh /home/yuri/.bg/bg.sh"
+        "$secMod,  B, exec, sh $HOME/nixos-config/bg/bg.sh"
         "$mainMod, E, exec, thunar"
         "$mainMod, F, togglefloating,"
         "$mainMod, P, exec, gpick"
