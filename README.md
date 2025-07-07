@@ -17,58 +17,26 @@ To get started with this setup, follow these steps:
 - The only user that will be on the system is `yuri`. Follow 4.2 to remake it to your user
 
 3. **Setup**
-- Clone the repo into your future config directory: `git clone https://github.com/Yur1yPzdc/nix-dotfiles [name of your directory]`. Mine is `/home/yuri/nixos-config`
-- Run `cp /etc/nixos/hardware_configuration.nix [your directory name]/hardware-configuration.nix` to insert hardware-configuration.nix file to config
-- Replace version-related lines in `configuration.nix` and `/home-manager/home.nix` to your installed nixos version. The one in the name of ISO you have installed
+- Clone the repo: `git clone https://github.com/Yur1yPzdc/nix-dotfiles ./nixos-config`. Mine is `/home/yuri/nixos-config`. ***Different folder name support coming soon*** 
+- Run `cd nixos-config` `cp /etc/nixos/hardware_configuration.nix ./hardware-configuration.nix` to insert hardware-configuration.nix file to config
+- Replace version-related lines in `./configuration.nix` and `./home-manager/home.nix` to your installed nixos version. The one in the name of ISO you have installed
+
 ```diff
 -- stateVersion = "24.05";
-++ stateVersion = "[your stateVersion]";
+++ stateVersion = "<your stateVersion>";
 ```
-- Run `sudo nixos-rebuild switch --experimental-features 'nix-command flakes'` to enable flakes
-- Run `rm -rf .git && nixos-rebuild switch --flake ~/nixos-config && home-manager switch --flake ~/nixos-config` to finish the install process
+
+- Run `rm -rf .git && nixos-rebuild switch --flake . && home-manager switch --flake .` to finish the install process
 
 4. **Extras**
   
   4.1 **Included shortcuts**
-- `rebuild = sudo nixos-rebuild switch --flake $HOME/[your directory name]`
-- `hmswitch = home-manager switch --flake $HOME/[your directory name]`
+- `rebuild = sudo nixos-rebuild switch --flake $HOME/nixos-config`
+- `hmswitch = home-manager switch --flake $HOME/nixos-config`
 - `v, vi, vim = nvim`
 
 4.2 **Creating with non-yuri user**
-- Rename all of those listed below. Easier done with vim hotkeys: `:%s/yuri/username/g`
-
-`configuration.nix`
-```diff
--- configFile.path = "/home/yuri/scripts/wifi/wpa_supplicant.nix";
-++ configFile.path = "/home/username/scripts/wifi/wpa_supplicant.nix";
-
--- users.users.yuri = {
-++ users.users.username = {
-
--- services.getty.autoLoginUser = "yuri";
-++ services.getty.autoLoginUser = "username";
-```
-
-`/home-manager/home.nix`
-```diff
--- username = "yuri";
-++ username = "username";
-
--- homeDirectory = "/home/yuri";
-++ homeDirectory = "/home/username";
-```
-
-`flake.nix`
-```diff
--- homeConfigurations.yuri = home-manager.lib.homeManagerConfiguration {
-++ homeConfigurations.username = home-manager.lib.homeManagerConfiguration {
-```
-
-`hyprland.nix`
-```diff
--- "$secMod,  B, exec, sh /home/yuri/bg/bg.sh"
-++ "$secMod,  B, exec, sh /home/username/bg/bg.sh"
-```
+- Run `sh replace.sh` from `/scripts/utility` to see its usage. If you've chosen wrong username you can run it again to replace wrong one tih a correct one.
 
 4.3 **Creating local proxy**
 - Run `nix-shell -p gcc gnumake`
@@ -78,7 +46,7 @@ To get started with this setup, follow these steps:
 - **NOTE:** upon Hyprland initialization `/scripts/wifi/proxy.sh` will be executed automatically, so don't run it manually
 
 4.4 **Remember to:**
-- Create user password as root either imperatively (booo!) `passwd username` or run `mkpasswd [your password] >> [your directory]/configuration.nix`, open `configuration.nix`, edit last line to look like `hashedPassword = "[that line]";` and move it right under `extraGroups = [ "wheel" "networkmanager" "input" ];` 
+- Create user password as root either imperatively (booo!) `passwd username` or run `mkpasswd <your password> >> nixos-config/configuration.nix`, open `configuration.nix`, edit last line to look like `hashedPassword = "<that line>";` and move it right under `extraGroups = [ "wheel" "networkmanager" "input" ];` 
 
 ## 🤝 Contributions
 🎨 If you have stumbled upon great touhou-related artwork that can be used as a wallpaper feel free to recommend adding it into this config
