@@ -36,7 +36,7 @@ To get started with this setup, follow these steps:
 - `v, vi, vim = nvim`
 
 4.2 **Creating with non-yuri user**
-- Run `sh replace.sh` from `/scripts/utility` to see its usage. If you've chosen wrong username you can run it again to replace wrong one tih a correct one.
+- Run `sh replace.sh` from `/scripts/utility` to see its usage. If you've chosen wrong username you can run it again to replace wrong one with a correct one.
 
 4.3 **Creating local proxy**
 - Run `nix-shell -p gcc gnumake`
