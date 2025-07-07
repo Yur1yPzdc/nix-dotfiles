@@ -145,7 +145,7 @@
         "$mainMod, F, togglefloating,"
         "$mainMod, P, exec, gpick"
         "$mainMod, J, togglesplit, # dwindle"
-        "$mainMod, T, exec, telegram-desktop"
+        "$mainMod, T, exec, Telegram"
 
         # Move focus with mainMod + arrow keys
         "$secMod, H, movefocus, l"
