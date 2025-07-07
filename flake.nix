@@ -3,18 +3,22 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nur.url = "github:nix-community/NUR";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
-    nixgl.url = "github:nix-community/nixGL";
-    nur.url = "github:nix-community/NUR";
+    
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    rose-pine-hyprcursor = {
+      url = "github:ndom91/rose-pine-hyprcursor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
  
   outputs = { self, nixpkgs, home-manager, nixvim, nixgl, nur, ... }@inputs: {
@@ -24,7 +28,7 @@
       specialArgs = { inherit inputs; };
       modules = [ 
         ./configuration.nix 
-	      nixvim.nixosModules.nixvim
+	nixvim.nixosModules.nixvim
       ];
     };
   
