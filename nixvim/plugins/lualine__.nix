@@ -56,19 +56,6 @@
           ""
         ];
         lualine_c = [
-          # {
-          #   __unkeyed-1 = {
-          #     __raw = 
-          #     ''
-          #       function()
-          #         return '▊'
-          #       end
-          #     '';
-          #   };
-          #   color.fg = "#51afef";
-          #   color.bg = "#1a1b26";
-          #   padding.left = 0;
-          # }
           {
             __unkeyed-1 = {
               __raw = 
@@ -211,7 +198,7 @@
             cond.__raw = 
             ''
               function()
-                return vim.fn.winwidth(0) > 100
+                return vim.fn.winwidth(0) > 80
               end
             '';
           }
@@ -245,12 +232,23 @@
             color.fg = "#a9a1e1";
             color.bg = "#1a1b26";
             color.gui = "bold";
+            fmt.__raw = 
+            ''
+              function(branch_name)
+                local max_length = 10
+                if #branch_name > max_length and vim.fn.winwidth(0) < 61 then
+                  return string.sub(branch_name, 1, max_length) .. '…'
+                end
+                return branch_name
+              end
+            '';
             cond.__raw = 
             ''
               function()
-                return vim.fn.winwidth(0) > 120
+                return vim.fn.winwidth(0) > 60            
               end
             '';
+            icon = " ";
           }
           {
             __unkeyed-1 = "diff";
@@ -268,16 +266,7 @@
             cond.__raw = 
             ''
               function()
-                return vim.fn.winwidth(0) > 120
-              end
-            '';
-          }
-          {
-            __unkeyed-1 = "diagnostics";
-            cond.__raw = 
-            ''
-              function()
-                return vim.fn.winwidth(0) > 120
+                return vim.fn.winwidth(0) > 60
               end
             '';
           }
@@ -294,6 +283,15 @@
           #   color.bg = "#1a1b26";
           #   padding.right = 0;
           # }
+          {
+            __unkeyed-1 = "diagnostics";
+            cond.__raw = 
+            ''
+              function()
+                return vim.fn.winwidth(0) > 100
+              end
+            '';
+          }
         ];
         lualine_y = [
           ""
