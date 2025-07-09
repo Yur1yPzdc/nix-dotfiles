@@ -73,14 +73,14 @@
     # texliveFull
     # texlivePackages.babel-russian
     # asymptote
-    git
+    # git # Configured in ./home-manager
 
     # Uilities & stuff
     brightnessctl
-    waybar
+    # waybar # Configured in ./home-manager
     eww
     swww
-    alacritty
+    # alacritty # Configured in ./home-manager
     ffmpeg
     pamixer
     ripgrep
@@ -98,7 +98,7 @@
     xfce.thunar
     kdePackages.okular
     # firefox # Configured in ./home-manager
-    # telegram-desktop # Configured in ./home-manager
+    # telegram-desktop # Enabled in ./home-manager
     # discordo
     # libresprite
     # urn-timer
