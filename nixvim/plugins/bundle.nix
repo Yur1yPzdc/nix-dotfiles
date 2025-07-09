@@ -2,6 +2,7 @@
   imports = [
     ./aerial.nix
     ./cmp-treesitter.nix
+    ./committia.nix
     ./crates.nix
     ./lsp.nix
     ./lualine__.nix
