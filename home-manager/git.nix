@@ -1,8 +1,14 @@
 {
   programs.git = {
     enable = true;
+
     userName = "Yur1yPzdc";
     userEmail = "birinyurik@gmail.com";
-    #init.defaultBranch = "master";
+
+    extraConfig = {
+      color.ui = "true";
+      core.editor = "nvim";
+      init.defaultBranch = "master";
+    };
   };
 }
