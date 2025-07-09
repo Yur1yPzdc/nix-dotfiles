@@ -2,17 +2,23 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [ 
       ./hardware-configuration.nix
       ./nixvim/nixvim.nix
     ];
 
-  # Use the systemd-boot EFI boot loader.
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # Boot loader stuff
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # Disks-related stuff
+  services.devmon.enable = true;  
+  services.gvfs.enable = true; 
+  services.udisks2.enable = true;
 
+  # Internet and bluetooth stuff
   networking.hostName = "nixos"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.supplicant = {
@@ -20,19 +26,32 @@
       configFile.path = "/home/yuri/.wifi/wpa_supplicant.conf";
     };
   };
+  hardware.bluetooth.enable = true;
 
-  # Enable session for hyprland on start
-  #services.ircClient.enable = config.networking.hostName == "nixos";
-  #services.ircClient.user = "yuri"; 
+  # Sound stuff
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+  };
 
-  #services.xserver.enable = true;
-  #services.xserver.displayManager.sddm.enable = true;
-  #services.xserver.displayManager.sddm.wayland.enable = true;
+  # Enable touchpad support (enabled default in most desktopManager).
+  services.libinput.enable = true;
 
   # Set your time zone.
   time.timeZone = "Asia/Novosibirsk";
 
-  i18n.defaultLocale = "en_US.UTF-8"; # Select internationalisation properties.
+  # Text input stuff
+  i18n = {
+    inputMethod = {
+      enable = true;
+      type = "fcitx5";
+      ibus.engines = with pkgs.ibus-engines; [ mozc ];
+    };
+    defaultLocale = "en_US.UTF-8"; # Select internationalisation properties.
+  };
+
+  # Packages stuff
+  nixpkgs.config.allowUnfree = true;
   fonts.packages = with pkgs; [
     jetbrains-mono
     powerline-fonts
@@ -42,41 +61,6 @@
     ipaexfont
     ricty
   ];
-
-  i18n = {
-    inputMethod = {
-      enable = true;
-      type = "fcitx5";
-      ibus.engines = with pkgs.ibus-engines; [ mozc ];
-    };
-  };
-
-  # Enable sound.
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
-
-  services.devmon.enable = true;  
-  services.gvfs.enable = true; 
-  services.udisks2.enable = true;
-
-  users.users.yuri = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "input" ]; # Enable ‘sudo’ for the user.
-  };
-
-  services.getty.autologinUser = "yuri";
-
-  programs.hyprland.enable = true;
-
-  hardware.graphics.enable = true;
-
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
     # Home-manager
     home-manager
@@ -132,24 +116,34 @@
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
 
+  # Hyprland stuff
+  programs.hyprland.enable = true;
+  hardware.graphics.enable = true;
+
+  # Updating packages 
+  system.autoUpgrade = {
+    enable = true;
+    dates = "weekly";
+  };
+
+  # Garbage collection
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 14d";
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
+  # User-related stuff
+  users.users.yuri = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" "input" ]; # Enable ‘sudo’ for the user.
+  };
+  services.getty.autologinUser = "yuri";
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  # Zram config
   zramSwap = {
     enable = true;
     algorithm = "lz4";
@@ -157,32 +151,7 @@
     priority = 999;
   };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # imports = [
-    # ./opts.nix
-    # ./keymaps.nix
-    # ./autocmds.nix
-    # ./plugins/bundle.nix
-  # ];
-
-#   programs.nixvim = {
-#     enable = true;
-# 
-#     defaultEditor = true;
-#     colorschemes.tokyonight.enable = true;
-# 
-#     plugins.nix.enable = true;
-# 
-#     extraPlugins = with pkgs.vimPlugins; [
-#       surround
-#       # ale
-#     ];
-#   };
+  # Useful comment
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
