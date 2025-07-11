@@ -8,6 +8,7 @@
     stateVersion = "24.05";
     packages = with pkgs; [
       telegram-desktop
+      litemdview
     ];
   };
 

@@ -77,7 +77,7 @@
 
     # Uilities & stuff
     brightnessctl
-    # waybar # Configured in ./home-manager
+    # waybar # Configured in ./home-manager and flake.nix
     eww
     swww
     # alacritty # Configured in ./home-manager
