@@ -18,9 +18,9 @@
         };
 
         "hyprland/language" = {
-          format-en = "EN";
-          format-ru = "RU";
-          min-length = 5;
+          format-en = "Nya ฅ^•ﻌ•^ฅ ";
+          format-ru = "Няя ฅ^•ﻌ•^ฅ ";
+          min-length = 12;
           tooltip = false;
         };
 
@@ -29,8 +29,8 @@
           numlock = true;
           format = "{icon} ";
           format-icons = {
-             locked = " ";
-            unlocked = "";
+            locked   = " ";
+            unlocked = " ";
           };
           tooltip = false;
         };
@@ -90,6 +90,8 @@ window#waybar.hidden {
     transition: none;
     color: #ffffff;
     background: #1a1623;
+    font-family: CascadiaCove;
+    font-size: 16px;
 }
 
 #keyboard-state {
@@ -102,6 +104,7 @@ window#waybar.hidden {
 }
 
 #battery {
+    min-width: 40px;
     padding-left: 8px;
     padding-right: 0px;
     border-radius: 0px 8px 8px 0px;
@@ -111,7 +114,7 @@ window#waybar.hidden {
 }
 
 #pulseaudio {
-    min-width: 50px;
+    min-width: 70px;
     padding-right: 0px;
     padding-left: 8px;
     border-radius: 0px 0px 0px 0px;
