@@ -254,7 +254,7 @@
             __unkeyed-1 = "diff";
             symbols = {
               added = " ";
-              modified = "󰝤 ";
+              modified = " ";
               removed = " ";
             };
             diff_color = {
