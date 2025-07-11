@@ -11,13 +11,13 @@ To get started with this setup, follow these steps:
 - minimal no GUI installation
 - Included packages: git, vim
 - Enable wireless internet via wpa_supplicant
-- Create your future user, a default one. Either name it `yuri` or as you want, but follow 2 then
+- Create your future user, a default one. Either name it `yuri` or as you want, but follow 2 then. Or you can run in from root, so make a temp folder then
 
 2. **NOTE**
 - The only user that will be on the system is `yuri`. Follow 4.2 to remake it to your user
 
 3. **Setup**
-- Clone the repo: `git clone https://github.com/Yur1yPzdc/nix-dotfiles ./nixos-config`. Mine is `/home/yuri/nixos-config`. ***Different folder name support coming soon*** 
+- Clone the repo: `git clone https://github.com/Yur1yPzdc/nix-dotfiles ./nixos-config`. Mine is `/home/yuri/nixos-config`. To rename it to yours follow 4.3
 - Run `cd nixos-config` `cp /etc/nixos/hardware_configuration.nix ./hardware-configuration.nix` to insert hardware-configuration.nix file to config
 - Replace version-related lines in `./configuration.nix` and `./home-manager/home.nix` to your installed nixos version. The one in the name of ISO you have installed
 
