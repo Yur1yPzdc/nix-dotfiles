@@ -7,7 +7,7 @@ To get started with this setup, follow these steps:
 1. **Install NixOS**
    
    Recommended settings:
-- x86-64_linux system with UEFI boot ~because i hate MBR~. You can copy them from here by hand
+- x86-64_linux system with UEFI boot ~because i hate MBR~. You can copy boot settings from here
 - Enable flakes: `nix.settings.experimental-features = [ "nix-command" "flakes" ];`
 - Minimal no GUI installation
 - Include packages: git, vim
