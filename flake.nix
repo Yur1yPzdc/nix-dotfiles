@@ -21,7 +21,7 @@
     };
   };
  
-  outputs = { self, nixpkgs, home-manager, nixvim, nixgl, nur, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nixvim, nur, ... }@inputs: {
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
