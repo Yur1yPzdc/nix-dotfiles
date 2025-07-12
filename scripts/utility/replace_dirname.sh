@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "$1" ] ; then
-  echo "Replaces default dirname 'nixos-config' with yours\n"
+  echo "Replaces default dirname 'nixos-config' with yours"
   echo "Usage: $0 <new_dirname>"
   exit 1
 fi
