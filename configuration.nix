@@ -114,7 +114,7 @@
     cmatrix
 
     # Desktop apps
-    firefox
+    # firefox # Configured in home-manager
     xfce.thunar
     telegram-desktop
     # discord
