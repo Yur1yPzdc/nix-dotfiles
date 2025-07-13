@@ -18,9 +18,9 @@
         };
 
         "hyprland/language" = {
-          format-en = "EN";
-          format-ru = "RU";
-          min-length = 5;
+          format-en = "Nya ฅ^•ﻌ•^ฅ ";
+          format-ru = "Няя ฅ^•ﻌ•^ฅ ";
+          min-length = 12;
           tooltip = false;
         };
 
@@ -32,6 +32,7 @@
              locked = " ";
             unlocked = "";
           };
+          device-path = "/dev/input/by-path/pci-0000:00:14.0-usb-0:1:1.0-event-kbd";
           tooltip = false;
         };
 
@@ -43,12 +44,12 @@
         };
 
         "battery" = {
-          format = "󰂂{capacity}% ";
+          format = "󰂂 {capacity}% ";
           tooltip = false;
         };
 
         "pulseaudio" = {
-          format= "󰕾{volume}% ";
+          format= "󰕾 {volume}% ";
           tooltip = false;
         };
 
@@ -61,8 +62,8 @@
 {
 border: none;
 border-radius: 0;
-font-family: JetBrains Mono;
-font-weight: bold; 
+font-family: IpaexGothic;
+font-size: 14px;
 min-height: 20px;
 }
 
@@ -90,6 +91,8 @@ window#waybar.hidden {
     transition: none;
     color: #ffffff;
     background: #1a1623;
+    font-family: CascadiaCove;
+    font-size: 16px;
 }
 
 #keyboard-state {
@@ -99,6 +102,8 @@ window#waybar.hidden {
     transition: none;
     color: #ffffff;
     background: #1a1623;
+    font-family: CascadiaCove;
+    font-size: 16px;
 }
 
 #battery {

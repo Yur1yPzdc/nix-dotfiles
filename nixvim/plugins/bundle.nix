@@ -1,14 +1,18 @@
 {
   imports = [
+    ./aerial.nix
+    ./cmp-treesitter.nix
+    ./committia.nix
+    ./crates.nix
+    ./lsp.nix
+    ./lualine__.nix
     ./neotree.nix
+    ./nix.nix
+    ./opts.nix
     ./surround.nix
     ./telescope.nix
-    ./lazy.nix
-    ./lsp.nix
-    ./cmp-treesitter.nix
-    ./vimtex.nix
     ./texpresso.nix
-    ./airline.nix
+    ./vimtex.nix
     ./web-devicons.nix
   ];
 }

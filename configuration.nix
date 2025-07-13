@@ -7,6 +7,9 @@
       ./nixvim/nixvim.nix
     ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # Boot loader stuff
   boot.loader = {
     grub = {
       enable = true;
@@ -19,43 +22,22 @@
     timeout = null;
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # Disks-related stuff
+  services.devmon.enable = true;  
+  services.gvfs.enable = true; 
+  services.udisks2.enable = true;
 
-  networking.hostName = "nixos"; # Define your hostname. Do not change unless you want to rewrite flake and home-manager
+  # Internet and bluetooth stuff
+  networking.hostName = "nixos"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.supplicant = {
     "wlp60s0" = {
-      configFile.path = "/home/yuri/nixos-config/scripts/wifi/wpa_supplicant.conf";
+      configFile.path = "/home/yuri/.wifi/wpa_supplicant.conf";
     };
   };
+  hardware.bluetooth.enable = true;
 
-
-  # Set your time zone.
-  time.timeZone = "Europe/Moscow";
-
-  i18n.defaultLocale = "en_US.UTF-8"; # Select internationalisation properties.
-
-  fonts.packages = with pkgs; [
-    jetbrains-mono
-    twemoji-color-font
-    font-awesome
-    powerline-fonts
-    powerline-symbols
-    nerd-fonts.symbols-only
-    cascadia-code
-    ipaexfont
-    kochi-substitute
-  ];
-
-  i18n = {
-    inputMethod = {
-      enable = true;
-      type = "fcitx5";
-      ibus.engines = with pkgs.ibus-engines; [ mozc ];
-    };
-  };
-
-  # Enable sound.
+  # Sound stuff
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -64,23 +46,30 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  services.devmon.enable = true;  
-  services.gvfs.enable = true; 
-  services.udisks2.enable = true;
+  # Set your time zone.
+  time.timeZone = "Europe/Moscow";
 
-  users.users.yuri = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "input" ]; # Enable ‘sudo’ for the user.
+  # Text input stuff
+  i18n = {
+    inputMethod = {
+      enable = true;
+      type = "fcitx5";
+      ibus.engines = with pkgs.ibus-engines; [ mozc ];
+    };
+    defaultLocale = "en_US.UTF-8"; # Select internationalisation properties.
   };
 
-  services.getty.autologinUser = "yuri";
-
-  programs.hyprland.enable = true;
-
-  hardware.graphics.enable = true;
-
+  # Packages stuff
   nixpkgs.config.allowUnfree = true;
-
+  fonts.packages = with pkgs; [
+    jetbrains-mono
+    powerline-fonts
+    powerline-symbols
+    nerd-fonts.caskaydia-cove
+    # Japanese cool fonts
+    ipaexfont
+    ricty
+  ];
   environment.systemPackages = with pkgs; [
     # Home-manager
     home-manager
@@ -88,24 +77,25 @@
     # For programming & stuff
     rustup
     rust-analyzer
-    gcc
-    python3
-    texliveFull
-    texlivePackages.babel-russian
-    asymptote
-    git
+    # gcc
+    # python3
+    # texliveFull
+    # texlivePackages.babel-russian
+    # asymptote
+    # git # Configured in ./home-manager
 
     # Uilities & stuff
     brightnessctl
-    waybar
-    #eww
+    # waybar # Configured in ./home-manager and flake.nix
+    eww
     swww
-    alacritty
+    # alacritty # Configured in ./home-manager
     ffmpeg
     pamixer
     ripgrep
     fd
     zram-generator
+    hyprpicker
 
     # Fun & rice
     fastfetch
@@ -114,44 +104,55 @@
     cmatrix
 
     # Desktop apps
-    # firefox # Configured in home-manager
     xfce.thunar
-    telegram-desktop
-    # discord
-    apvlv
+    kdePackages.okular
+    # firefox # Configured in ./home-manager
+    # telegram-desktop # Enabled in ./home-manager
+    # discordo
     # libresprite
     # urn-timer
     # obs-studio
     # vlc
     # gimp
+    # libsForQt5.kdenlive
 
     # Gaming (Not needed)
     # gnugo
     # libsForQt5.kigo
     # retroarchFull
 
-    # Custom cursor
+    # Custom cursor???
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
 
+  # Hyprland stuff
+  programs.hyprland.enable = true;
+  hardware.graphics.enable = true;
+
+  # Updating packages 
+  system.autoUpgrade = {
+    enable = true;
+    dates = "weekly";
+  };
+
+  # Garbage collection
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 14d";
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
+  # User-related stuff
+  users.users.yuri = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" "input" ]; # Enable ‘sudo’ for the user.
+  };
+  services.getty.autologinUser = "yuri";
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  # Zram config
   zramSwap = {
     enable = true;
     algorithm = "lz4";

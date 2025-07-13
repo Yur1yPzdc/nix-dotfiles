@@ -39,6 +39,10 @@
           autostart = true;
           # filetypes = ["*.c" "*.cpp"];
         };
+
+        nixd = {
+          enable = true;
+        };
       };
     };
   };
