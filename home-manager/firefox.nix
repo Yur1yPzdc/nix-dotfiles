@@ -37,7 +37,11 @@
         isDefault = true;
         settings = {
           "browser.search.defaultenginename" = "google";
-          "browser.search.order.1" = "google";
+          "extensions,activeThemeID" = "firefox-compact-dark@mozilla.org"; # Dark theme
+          "extensions.install_origins.enabled" = false; 
+          "extensions.autoDisableScopes" = 0; # These 2 are for automatic enabling of extensions
+          "services.sync.prefs.sync.extensions.activeThemeID" = false; # Dont change theme on other devices
+          "browser.migrate.chrome.extensions.enabled" = false; # Remove startup popup          "browser.search.order.1" = "google";
         };
         search = {
           force = true;
