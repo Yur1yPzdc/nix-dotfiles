@@ -25,7 +25,7 @@
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.supplicant = {
     "wlp60s0" = {
-      configFile.path = "/home/yuri/scripts/wifi/wpa_supplicant.conf";
+      configFile.path = "/home/yuri/nixos-config/scripts/wifi/wpa_supplicant.conf";
     };
   };
 
