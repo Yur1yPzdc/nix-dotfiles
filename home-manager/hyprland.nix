@@ -28,9 +28,12 @@
         enable_stdout_logs = true;
       };
 
+      ecosystem = {
+        no_update_news = true;
+      };
+
       input = {
         kb_layout = "us,ru";
-        # kb_variant = "lang";
         kb_options = "grp:alt_shift_toggle";
 
         follow_mouse = 1;
@@ -116,18 +119,11 @@
         disable_hyprland_logo = true;
       };
 
-      windowrule = [
-        "float, ^(imv)$"
-        "float, ^(mpv)$"
-        # "opacity 1.0 0.75"
-      ];
-
       exec-once = [
         "swww-daemon"
         "sh $HOME/nixos-config/bg/bg.sh"
         "waybar"
         "sh $HOME/nixos-config/scripts/wifi/run.sh"
-        #"eww daemon"
         "eww open wifi_box"
       ];
 
