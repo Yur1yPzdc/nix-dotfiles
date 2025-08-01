@@ -1,5 +1,5 @@
 {
   programs.nixvim.plugins.aerial = {
-    enable = false;
+    enable = true;
   };
 }

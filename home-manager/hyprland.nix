@@ -52,6 +52,8 @@
         border_size = 3;
         "col.active_border" = "rgba(7a4ff4ee) rgba(e681caee) -60deg";
         "col.inactive_border" = "rgba(a257fbaa)";
+
+        layout = "master";
       };
 
       decoration = {
@@ -66,7 +68,7 @@
 
         active_opacity = 1.0;
         inactive_opacity = 0.8;
-        };
+      };
 
       animations = {
         enabled = true;
@@ -103,9 +105,6 @@
         animate_manual_resizes = true;
         animate_mouse_windowdragging = true;
         enable_swallow = true;
-        render_ahead_of_time = false;
-        # force_default_wallpaper = -1;
-        # disable_hyprland_logo = false;
         force_default_wallpaper = 1;
         disable_hyprland_logo = true;
       };
@@ -115,7 +114,6 @@
         "sh ../bg/bg.sh"
         "waybar"
         "sh ../scripts/wifi/run.sh"
-        "eww open wifi_box"
       ];
 
       bind = [
@@ -185,7 +183,6 @@
         # Brightness control
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%- "
         ", XF86MonBrightnessUp, exec, brightnessctl set +5% "
-
       ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging

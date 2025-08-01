@@ -29,8 +29,8 @@
           numlock = true;
           format = "{icon} ";
           format-icons = {
-             locked = " ";
-            unlocked = "";
+            locked = " ";
+            unlocked = " ";
           };
           device-path = "/dev/input/by-path/pci-0000:00:14.0-usb-0:1:1.0-event-kbd";
           tooltip = false;

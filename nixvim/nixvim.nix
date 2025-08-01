@@ -1,9 +1,6 @@
 { config, lib, pkgs, ...}: {
 
   imports = [
-    # ./plugins/opts.nix
-    # ./keymaps.nix
-    # ./autocmds.nix
     ./plugins/bundle.nix
   ];
 

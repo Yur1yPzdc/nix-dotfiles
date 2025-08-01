@@ -5,7 +5,7 @@
     ./committia.nix
     ./crates.nix
     ./lsp.nix
-    ./lualine__.nix
+    ./lualine.nix
     ./neotree.nix
     ./nix.nix
     ./opts.nix
