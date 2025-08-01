@@ -24,10 +24,6 @@
 
     plugins.nix.enable = true;
 
-    extraPlugins = with pkgs.vimPlugins; [
-      # ale
-    ];
-
     keymaps = let 
       normal = 
        lib.mapAttrsToList

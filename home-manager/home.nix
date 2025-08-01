@@ -16,7 +16,7 @@
     ./alacritty.nix
     ./git.nix
     ./waybar.nix
-    #./hyprcursor.nix
+    ./firefox.nix
   ];
 
 }

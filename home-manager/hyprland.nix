@@ -28,9 +28,12 @@
         enable_stdout_logs = true;
       };
 
+      ecosystem = {
+        no_update_news = true;
+      };
+
       input = {
         kb_layout = "us,ru";
-        # kb_variant = "lang";
         kb_options = "grp:alt_shift_toggle";
 
         follow_mouse = 1;
@@ -109,25 +112,17 @@
         animate_manual_resizes = true;
         animate_mouse_windowdragging = true;
         enable_swallow = true;
-        render_ahead_of_time = false;
         # force_default_wallpaper = -1;
         # disable_hyprland_logo = false;
         force_default_wallpaper = 1;
         disable_hyprland_logo = true;
       };
 
-      windowrule = [
-        "float, ^(imv)$"
-        "float, ^(mpv)$"
-        # "opacity 1.0 0.75"
-      ];
-
       exec-once = [
         "swww-daemon"
-        "sh $HOME/.bg/bg.sh"
+        "sh $HOME/nixos-config/bg/bg.sh"
         "waybar"
-        "sh $HOME/.wifi/run.sh"
-        #"eww daemon"
+        "sh $HOME/nixos-config/scripts/wifi/run.sh"
         "eww open wifi_box"
       ];
 
@@ -140,7 +135,7 @@
         "$secMod,  Q, killactive,"
         "$secMod,  F, exec, firefox"
         "$secMod,  D, exec, rofi -show drun"
-        "$secMod,  B, exec, sh /home/yuri/.bg/bg.sh"
+        "$secMod,  B, exec, sh $HOME/nixos-config/bg/bg.sh"
         "$mainMod, E, exec, thunar"
         "$mainMod, F, togglefloating,"
         "$mainMod, P, exec, gpick"
