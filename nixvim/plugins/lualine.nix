@@ -1,3 +1,23 @@
+let 
+  cond_50 = 
+  ''
+    function()
+    return vim.fn.winwidth(0) > 50
+    end
+  '';
+  cond_80 = 
+  ''
+    function()
+    return vim.fn.winwidth(0) > 80
+    end
+  '';
+  cond_100 = 
+  ''
+    function()
+    return vim.fn.winwidth(0) > 100
+    end
+  '';
+in
 {
   programs.nixvim.plugins.lualine = {
     enable = true;
@@ -6,7 +26,7 @@
       options = {
         disabled_filetypes = {
           __unkeyed-1 = [
-          ];                                        
+          ];
           __unkeyed-2 = [
             "neo-tree"
             "Telescope"
@@ -32,19 +52,19 @@
           right = "";
         };
         theme.normal.c = {
-          bg = "#1a1b26";
+          bg = "#15161e";
           fg = "#698bd3";
         };
         theme.inactive.c = {
-          bg = "#1a1b26";
+          bg = "#15161e";
           fg = "#698bd3";
         };
         theme.normal.a = {
           bg = "#698bd3";
-          fg = "#1a1b26";
+          fg = "#15161e";
         };
         theme.inactive.a = {
-          bg = "#1a1b26";
+          bg = "#15161e";
           fg = "#698bd3";
         };
       };
@@ -56,41 +76,6 @@
           ""
         ];
         lualine_c = [
-          {
-            __unkeyed-1 = {
-              __raw = 
-              ''
-                function()
-                  return ''
-                end,
-                color = function()
-                  local mode_color = {
-                    n = '#ec5f67',
-                    i = '#98be65',
-                    v = '#51afef',
-                    [''] = '#51afef',
-                    V = '#51afef',
-                    c = '#c678dd',
-                    no = '#ec5f67',
-                    s = '#FF8800',
-                    S = '#FF8800',
-                    [''] = '#FF8800',
-                    ic = '#ecbe7b',
-                    R = '#a9a1e1',
-                    Rv = '#a9a1e1',
-                    cv = '#ec5f67',
-                    ce = '#ec5f67',
-                    r = '#008080',
-                    rm = '#008080',
-                    ['r?'] = '#008080',
-                    ['!'] = '#ec5f67',
-                    t = '#ec5f67',
-                  }
-                  return { fg = mode_color[vim.fn.mode()], bg = '#1a1b26', }
-                end
-              '';
-            };
-          }
           {
             __unkeyed-1 = {
               __raw = 
@@ -119,52 +104,32 @@
                     ['!'] = '#ec5f67',
                     t = '#ec5f67',
                   }
-                  return { fg = mode_color[vim.fn.mode()], bg = '#1a1b26', gui = 'bold' }
+                  return { fg = mode_color[vim.fn.mode()], bg = '#15161e', gui = 'bold' }
                 end
               '';
             };
+            icon = "";
           }
           {
             __unkeyed-2 = "filesize";
             color.fg = "#bbc2cf";
-            color.bg = "#1a1b26";
+            color.bg = "#15161e";
             color.gui = "bold";
-            cond.__raw = 
-            ''
-              function()
-                return vim.fn.winwidth(0) > 80
-              end
-            '';
+            cond.__raw = cond_80;
           }
-          {
-            __unkeyed-2 = "filename";
-            color.fg = "#c568dd";
-            color.bg = "#1a1b26";
-            color.gui = "bold";
-            cond.__raw = 
-            ''
-              function()
-                return vim.fn.winwidth(0) > 100
-              end
-            '';
-          }
+          
           {
             __unkeyed-2 = "location";
             color.fg = "#bbc2cf";
-            color.bg = "#1a1b26";
+            color.bg = "#15161e";
             color.gui = "bold";
           }
           {
             __unkeyed-2 = "progress";
             color.fg = "#bbc2cf";
-            color.bg = "#1a1b26";
+            color.bg = "#15161e";
             color.gui = "bold";
-            cond.__raw = 
-            ''
-              function()
-                return vim.fn.winwidth(0) > 80
-              end
-            '';
+            cond.__raw = cond_80;
           }
         ];
         lualine_x = [
@@ -191,64 +156,61 @@
             };
             color = {
               fg = "#bbc2cf";
-              bg = "#1a1b26";
+              bg = "#15161e";
               gui = "bold";
             };
             icon = " LSP: ";
-            cond.__raw = 
-            ''
-              function()
-                return vim.fn.winwidth(0) > 80
-              end
-            '';
+            cond.__raw = cond_80;
           }
           "%="
-          {
-            __unkeyed-1 = "encoding";
-            color.fg = "#98be65";
-            color.bg = "#1a1b26";
-            color.gui = "bold";
-            cond.__raw = 
-            ''
-              function()
-                return vim.fn.winwidth(0) > 80
-              end
-            '';
-          }
-          {
-            __unkeyed-1 = "fileformat";
-            color.fg = "#98be65";
-            color.bg = "#1a1b26";
-            color.gui = "bold";
-            cond.__raw = 
-            ''
-              function()
-                return vim.fn.winwidth(0) > 80
-              end
-            '';
-          }
+          # {
+          #   __unkeyed-1 = "encoding";
+          #   color.fg = "#98be65";
+          #   color.bg = "#1a1b26";
+          #   color.gui = "bold";
+          #   cond.__raw = 
+          #   ''
+          #     function()
+          #       return vim.fn.winwidth(0) > 80
+          #     end
+          #   '';
+          # }
+          # {
+          #   __unkeyed-1 = "fileformat";
+          #   color.fg = "#98be65";
+          #   color.bg = "#1a1b26";
+          #   color.gui = "bold";
+          #   cond.__raw = 
+          #   ''
+          #     function()
+          #       return vim.fn.winwidth(0) > 80
+          #     end
+          #   '';
+          # }
           {
             __unkeyed-1 = "branch";
             color.fg = "#a9a1e1";
-            color.bg = "#1a1b26";
+            color.bg = "#15161e";
             color.gui = "bold";
             fmt.__raw = 
             ''
-              function(branch_name)
-                local max_length = 10
-                if #branch_name > max_length and vim.fn.winwidth(0) < 51 then
-                  return string.sub(branch_name, 1, max_length) .. '…'
+                function(str)
+                  local max_length = 15
+                  return #str > max_length and str:sub(1, max_length - 1) .. "…" or str
                 end
-                return branch_name
-              end
             '';
-            cond.__raw = 
-            ''
-              function()
-                return vim.fn.winwidth(0) > 50            
-              end
-            '';
-            icon = " ";
+            #fmt.__raw = 
+            #''
+            #  function(branch_name)
+            #    local max_length = 15
+            #    if #branch_name > max_length and vim.fn.winwidth(0) < 51 then
+            #      return string.sub(branch_name, 1, max_length) .. '…'
+            #    end
+            #    return branch_name
+            #  end
+            #'';
+            cond.__raw = cond_50;
+            icon = "";
           }
           {
             __unkeyed-1 = "diff";
@@ -262,22 +224,14 @@
               modified.fg = "#ff8800";
               removed.fg = "#ec5f67";
             };
-            color.bg = "#1a1b26";
-            cond.__raw = 
-            ''
-              function()
-                return vim.fn.winwidth(0) > 50
-              end
-            '';
+            color.bg = "#15161e";
+            cond.__raw = cond_50;
           }
           {
             __unkeyed-1 = "diagnostics";
-            cond.__raw = 
-            ''
-              function()
-                return vim.fn.winwidth(0) > 100
-              end
-            '';
+            color.bg = "#15161e";
+            cond.__raw = cond_100;
+            icon = "| ";
           }
         ];
         lualine_y = [
@@ -292,6 +246,23 @@
           {
             __unkeyed-1 = "buffers";
             symbols.alternate_file = ""; 
+          }
+        ];
+        lualine_x = [
+          {
+            __unkeyed-2 = "filename";
+            color.fg = "#c568dd";
+            color.bg = "#15161e";
+            # color.gui = "light";
+            cond.__raw = cond_100;
+            newfile_status = true;
+            path = 1;
+            shorting_target = 20;
+            symbols = {
+              modified = "";
+              readonly = "󱚳";
+              newfile = "";
+            };
           }
         ];
       };

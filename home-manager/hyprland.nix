@@ -128,7 +128,7 @@
         "$secMod,  B, exec, sh $HOME/nixos-config/bg/bg.sh"
         "$mainMod, E, exec, thunar"
         "$mainMod, F, togglefloating,"
-        "$mainMod, P, exec, gpick"
+        "$mainMod, P, exec, hyprpicker"
         "$mainMod, J, togglesplit, # dwindle"
         "$mainMod, T, exec, Telegram"
 

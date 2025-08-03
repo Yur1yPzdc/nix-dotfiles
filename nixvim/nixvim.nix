@@ -1,6 +1,9 @@
 { config, lib, pkgs, ...}: {
 
   imports = [
+    # ./plugins/opts.nix
+    # ./keymaps.nix
+    # ./autocmds.nix
     ./plugins/bundle.nix
   ];
 
@@ -31,13 +34,13 @@
         {
           "<M-c>" = ":Neotree<CR>";
           "<M-v>" = ":Neotree close<CR>";
-          "<M-m>" = ":PeekOpen<CR>";
-          "<M-n>" = ":PeekClose<CR>";
+          "<M-a>" = ":AerialToggle<CR>";
+          
         };
-       in
-       config.lib.nixvim.keymaps.mkKeymaps
-       {options.silent = true;}
-       (normal);
+      in
+      config.lib.nixvim.keymaps.mkKeymaps
+      {options.silent = true;}
+      (normal);
     
   };
 }

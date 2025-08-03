@@ -10,7 +10,7 @@
       font = {
         size = 14.0;
         normal = {
-          family = "CascadiaCove NF";
+          family = "CaskadiaCove NF";
           style = "SemiLight";
         };
       };

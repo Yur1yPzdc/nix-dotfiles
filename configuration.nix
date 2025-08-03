@@ -29,10 +29,11 @@
 
   # Internet and bluetooth stuff
   networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.supplicant = {
-    "wlp60s0" = {
-      configFile.path = "/home/yuri/.wifi/wpa_supplicant.conf";
+  networking.wireless = {
+    enable = true;  # Enables wireless support via wpa_supplicant.
+    interfaces = [ "wlp60s0" ];
+    networks."INTERNET_WIRLESS_5G" = {
+      psk = "9139442042";
     };
   };
   hardware.bluetooth.enable = true;

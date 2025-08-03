@@ -9,7 +9,7 @@
 
         modules-left = [ "hyprland/language" "keyboard-state" ];
         modules-center = [ "clock" ];
-        modules-right = [ "pulseaudio" "battery" ];
+        modules-right = [ "pulseaudio" "custom/battery" ];
 
         "hyprland/workspaces" = {
           disable-scroll = true;
@@ -43,10 +43,18 @@
           tooltip = false;
         };
 
-        "battery" = {
-          format = "󰂂 {capacity}% ";
+        "custom/battery" = {
+          format = "{}";
+          return-type = "text";
+          exec = "../scripts/for_waybar/battery.sh";
+          interval = "10";
           tooltip = false;
         };
+
+        # "battery" = {
+        #   format = "󰂂 {capacity}% ";
+        #   tooltip = false;
+        # };
 
         "pulseaudio" = {
           format= "󰕾 {volume}% ";
