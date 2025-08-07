@@ -47,7 +47,7 @@
           format = "{}";
           return-type = "text";
           exec = "sh /home/yuri/nixos-config/scripts/for_waybar/battery.sh";
-          interval = "10";
+          interval = 10;
           tooltip = false;
         };
 

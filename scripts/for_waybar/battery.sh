@@ -8,7 +8,7 @@ if [ -d "/sys/class/power_supply/BAT0" ]; then
       echo "󱊦 $cap%" 
       ;;
     "Discharging")
-      echo "󰂍 $cap%"
+      echo "󰂌$cap%"
       ;;
     "Full")
       echo "󰁹$cap%"
