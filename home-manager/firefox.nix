@@ -37,7 +37,7 @@
         isDefault = true;
         settings = {
           "browser.search.defaultenginename" = "google";
-          "extensions,activeThemeID" = "firefox-compact-dark@mozilla.org"; # Dark theme
+          "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org"; # Dark theme
           "extensions.install_origins.enabled" = false; 
           "extensions.autoDisableScopes" = 0; # These 2 are for automatic enabling of extensions
           "services.sync.prefs.sync.extensions.activeThemeID" = false; # Dont change theme on other devices
