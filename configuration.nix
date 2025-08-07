@@ -136,6 +136,7 @@
     flake = "path:/home/yuri/nixos-config";
     flags = [
       "--recreate-lock-file"
+      "--commit-lock-file"
     ];
     dates = "14:00";
   };
