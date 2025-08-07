@@ -40,7 +40,7 @@
       signcolumn = "yes"; # Whether to show the signcolumn
       colorcolumn = "100"; # Columns to highlight
 
-      laststatus = 3; # When to use a status line for the last window
+      laststatus = 0; # When to use a status line for the last window
 
       fileencoding = "utf-8"; # File-content encoding for the current buffer
 

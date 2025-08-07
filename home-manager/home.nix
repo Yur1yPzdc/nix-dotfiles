@@ -7,16 +7,18 @@
     homeDirectory = "/home/yuri";
     stateVersion = "24.05";
     packages = with pkgs; [
+      telegram-desktop
+      litemdview
     ];
   };
 
   imports = [ 
-    ./bash.nix 
-    ./hyprland.nix
     ./alacritty.nix
-    ./git.nix
-    ./waybar.nix
+    ./bash.nix 
     ./firefox.nix
+    ./git.nix
+    ./hyprland.nix
+    ./waybar.nix
   ];
 
 }

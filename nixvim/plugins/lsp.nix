@@ -39,6 +39,15 @@
           autostart = true;
           # filetypes = ["*.c" "*.cpp"];
         };
+
+        nixd = {
+          enable = true;
+        };
+
+        slint_lsp = {
+          enable = true;
+          settings.filetypes = [ "slint" ];
+        };
       };
     };
   };

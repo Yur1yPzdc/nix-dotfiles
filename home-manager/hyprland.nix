@@ -14,10 +14,11 @@
       monitor = ",preferred,auto,1";
 
       env = [
+        "AQ_DRM_DEVICES, /dev/dri/card1:/dev/dri/card0"
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
-        "XCURSOR_SIZE,20"
+        "XCURSOR_SIZE,24"
         "QT_QPA_PLATFORM,wayland"
         "XDG_SCREENSHOTS_DIR,~/screens"
         "HYPRCURSOR_THEME,rose-pine-hyprcursor"
@@ -54,8 +55,6 @@
         "col.inactive_border" = "rgba(a257fbaa)";
 
         layout = "master";
-
-        # no_cursor_warps = false;
       };
 
       decoration = {
@@ -68,14 +67,9 @@
           new_optimizations = true;
         };
 
-        #drop_shadow = false;
-        #shadow_range = 4;
-        #shadow_render_power = 3;
-        #"col.shadow" = "rgba(1a1a1aee)";
-
         active_opacity = 1.0;
         inactive_opacity = 0.8;
-        };
+      };
 
       animations = {
         enabled = true;
@@ -112,18 +106,15 @@
         animate_manual_resizes = true;
         animate_mouse_windowdragging = true;
         enable_swallow = true;
-        # force_default_wallpaper = -1;
-        # disable_hyprland_logo = false;
         force_default_wallpaper = 1;
         disable_hyprland_logo = true;
       };
 
       exec-once = [
         "swww-daemon"
-        "sh $HOME/nixos-config/bg/bg.sh"
+        "sh ../bg/bg.sh"
         "waybar"
-        "sh $HOME/nixos-config/scripts/wifi/run.sh"
-        "eww open wifi_box"
+        "sh ../scripts/wifi/run.sh"
       ];
 
       bind = [
@@ -138,7 +129,7 @@
         "$secMod,  B, exec, sh $HOME/nixos-config/bg/bg.sh"
         "$mainMod, E, exec, thunar"
         "$mainMod, F, togglefloating,"
-        "$mainMod, P, exec, gpick"
+        "$mainMod, P, exec, hyprpicker"
         "$mainMod, J, togglesplit, # dwindle"
         "$mainMod, T, exec, Telegram"
 
@@ -184,14 +175,6 @@
         "$mainMod SHIFT, 9, movetoworkspacesilent, 9"
         "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
 
-        # Scroll through existing workspaces with mainMod + scroll
-        # "$mainMod, mouse_down, workspace, e+1"
-        # "$mainMod, mouse_up, workspace, e-1"
-
-        # Keyboard backlight
-        # "$mainMod, F3, exec, brightnessctl -d *::kbd_backlight set +33%"
-        # "$mainMod, F2, exec, brightnessctl -d *::kbd_backlight set 33%-"
-
         # Volume and Media Control
         ", XF86AudioRaiseVolume, exec, pamixer -i 5 "
         ", XF86AudioLowerVolume, exec, pamixer -d 5 "
@@ -201,20 +184,6 @@
         # Brightness control
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%- "
         ", XF86MonBrightnessUp, exec, brightnessctl set +5% "
-
-        # Configuration files
-        # ''$mainMod SHIFT, N, exec, alacritty -e sh -c "rb"''
-        # ''$mainMod SHIFT, C, exec, alacritty -e sh -c "conf"''
-        # ''$mainMod SHIFT, H, exec, alacritty -e sh -c "nvim ~/nix/home-manager/modules/wms/hyprland.nix"''
-        # ''$mainMod SHIFT, W, exec, alacritty -e sh -c "nvim ~/nix/home-manager/modules/wms/waybar.nix''
-        # '', Print, exec, grim -g "$(slurp)" - | swappy -f -''
-
-        # Waybar
-        # "$mainMod, B, exec, pkill -SIGUSR1 waybar"
-        # "$mainMod, W, exec, pkill -SIGUSR2 waybar"
-
-        # Disable all effects
-        # "$mainMod Shift, G, exec, ~/.config/hypr/gamemode.sh "
       ];
 
       # Move/resize windows with mainMod + LMB/RMB and dragging

@@ -9,7 +9,7 @@
 
         modules-left = [ "hyprland/language" "keyboard-state" ];
         modules-center = [ "clock" ];
-        modules-right = [ "pulseaudio" "battery" ];
+        modules-right = [ "pulseaudio" "custom/battery" ];
 
         "hyprland/workspaces" = {
           disable-scroll = true;
@@ -18,9 +18,9 @@
         };
 
         "hyprland/language" = {
-          format-en = "EN";
-          format-ru = "RU";
-          min-length = 5;
+          format-en = "Nya ฅ^•ﻌ•^ฅ ";
+          format-ru = "Няя ฅ^•ﻌ•^ฅ ";
+          min-length = 12;
           tooltip = false;
         };
 
@@ -29,26 +29,35 @@
           numlock = true;
           format = "{icon} ";
           format-icons = {
-             locked = " ";
-            unlocked = "";
+            locked = " ";
+            unlocked = " ";
           };
+          device-path = "/dev/input/by-path/pci-0000:00:14.0-usb-0:1:1.0-event-kbd";
           tooltip = false;
         };
 
         "clock" = {
           timezone = "Asia/Novosibirsk";
           locale = "ja_JP.utf8";
-          format = "{:L%a | %d %B | %H:%M }";
+          format = "{:L%a | %d日 %B | %H:%M }";
           tooltip = false;
         };
 
-        "battery" = {
-          format = "󰂂{capacity}% ";
+        "custom/battery" = {
+          format = "{}";
+          return-type = "text";
+          exec = "../scripts/for_waybar/battery.sh";
+          interval = "10";
           tooltip = false;
         };
+
+        # "battery" = {
+        #   format = "󰂂 {capacity}% ";
+        #   tooltip = false;
+        # };
 
         "pulseaudio" = {
-          format= "󰕾{volume}% ";
+          format= "󰕾 {volume}% ";
           tooltip = false;
         };
 
@@ -61,8 +70,8 @@
 {
 border: none;
 border-radius: 0;
-font-family: JetBrains Mono;
-font-weight: bold; 
+font-family: IpaexGothic;
+font-size: 14px;
 min-height: 20px;
 }
 
@@ -90,6 +99,8 @@ window#waybar.hidden {
     transition: none;
     color: #ffffff;
     background: #1a1623;
+    font-family: CascadiaCove;
+    font-size: 16px;
 }
 
 #keyboard-state {
@@ -99,6 +110,8 @@ window#waybar.hidden {
     transition: none;
     color: #ffffff;
     background: #1a1623;
+    font-family: CascadiaCove;
+    font-size: 16px;
 }
 
 #battery {

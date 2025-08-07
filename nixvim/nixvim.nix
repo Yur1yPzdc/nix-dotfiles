@@ -1,9 +1,6 @@
 { config, lib, pkgs, ...}: {
 
   imports = [
-    ./plugins/opts.nix
-    # ./keymaps.nix
-    # ./autocmds.nix
     ./plugins/bundle.nix
   ];
 
@@ -26,19 +23,18 @@
 
     keymaps = let 
       normal = 
-       lib.mapAttrsToList
-       (key: action: {
-         mode = "n";
-         inherit action key;
-       })
-       {
-         "<M-c>" = ":Neotree<CR>";
-         "<M-v>" = ":Neotree close<CR>";
-         # "<M-T>" = ":Telescope find_files<CR>";
-
-         # "<CM-k>" = ":move-2<CR>";
-         # "<CM-j>" = ":move+<CR>";
-       };
+        lib.mapAttrsToList
+        (key: action: {
+          mode = "n";
+          inherit action key;
+        })
+        {
+          "<M-c>" = ":Neotree<CR>";
+          "<M-v>" = ":Neotree close<CR>";
+          "<M-a>" = ":AerialToggle<CR>";
+          "<leader>cc" = ":!cargo check<CR>";
+          
+        };
       in
       config.lib.nixvim.keymaps.mkKeymaps
       {options.silent = true;}
