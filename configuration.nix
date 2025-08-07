@@ -78,7 +78,7 @@
     # For programming & stuff
     rustup
     rust-analyzer
-    # gcc
+    gcc
     # python3
     # texliveFull
     # texlivePackages.babel-russian
@@ -133,7 +133,11 @@
   # Updating packages 
   system.autoUpgrade = {
     enable = true;
-    dates = "weekly";
+    flake = "path:/home/yuri/nixos-config";
+    flags = [
+      "--recreate-lock-file"
+    ];
+    dates = "14:00";
   };
 
   # Garbage collection

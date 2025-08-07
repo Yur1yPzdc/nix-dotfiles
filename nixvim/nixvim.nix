@@ -1,9 +1,6 @@
 { config, lib, pkgs, ...}: {
 
   imports = [
-    # ./plugins/opts.nix
-    # ./keymaps.nix
-    # ./autocmds.nix
     ./plugins/bundle.nix
   ];
 
@@ -35,6 +32,7 @@
           "<M-c>" = ":Neotree<CR>";
           "<M-v>" = ":Neotree close<CR>";
           "<M-a>" = ":AerialToggle<CR>";
+          "<leader>cc" = ":!cargo check<CR>";
           
         };
       in

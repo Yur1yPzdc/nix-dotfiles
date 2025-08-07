@@ -14,6 +14,7 @@
       monitor = ",preferred,auto,1";
 
       env = [
+        "AQ_DRM_DEVICES, /dev/dri/card1:/dev/dri/card0"
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"

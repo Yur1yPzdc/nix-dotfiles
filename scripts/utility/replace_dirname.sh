@@ -19,7 +19,7 @@ replace_except_line2() {
   echo "Replaced 'nixos-config' with '$REPLACEMENT_WORD' in $FILE (except flake' description)"
 }
 
-for FILE in ../../home-manager/bash.nix ../../bg/bg.sh ../../home-manager/hyprland.nix; do
+for FILE in ../../home-manager/bash.nix ../../configuration.nix ../../bg/bg.sh ../../home-manager/hyprland.nix; do
   if [ -f "$FILE" ]; then
     sed -i "s/nixos-config/$REPLACEMENT_WORD/g" "$FILE"
     echo "Replaced 'nixos-config' with '$REPLACEMENT_WORD' in $FILE"

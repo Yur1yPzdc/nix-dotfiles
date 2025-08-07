@@ -39,7 +39,7 @@
         "clock" = {
           timezone = "Asia/Novosibirsk";
           locale = "ja_JP.utf8";
-          format = "{:L%a | %d %B | %H:%M }";
+          format = "{:L%a | %d日 %B | %H:%M }";
           tooltip = false;
         };
 
