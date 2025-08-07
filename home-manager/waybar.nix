@@ -39,25 +39,22 @@
         "clock" = {
           timezone = "Asia/Novosibirsk";
           locale = "ja_JP.utf8";
-          format = "{:L%a | %d日 %B | %H:%M }";
+          format = "{:L%a|%d日%B|%H:%M}";
           tooltip = false;
         };
 
         "custom/battery" = {
           format = "{}";
           return-type = "text";
-          exec = "../scripts/for_waybar/battery.sh";
+          exec = "sh /home/yuri/nixos-config/scripts/for_waybar/battery.sh";
           interval = "10";
           tooltip = false;
         };
 
-        # "battery" = {
-        #   format = "󰂂 {capacity}% ";
-        #   tooltip = false;
-        # };
-
         "pulseaudio" = {
-          format= "󰕾 {volume}% ";
+          format = "󰕾 {volume: >3}% ";
+          format-bluetooth = "󰂰 {volume: >3}% ";
+          format-muted = "音無し";
           tooltip = false;
         };
 
@@ -70,8 +67,8 @@
 {
 border: none;
 border-radius: 0;
-font-family: IpaexGothic;
-font-size: 14px;
+font-family: CaskaydiaCove;
+font-size: 16px;
 min-height: 20px;
 }
 
@@ -90,6 +87,8 @@ window#waybar.hidden {
     transition: none;
     color: #ffffff;
     background: #1a1623;
+    font-family: Ricty;
+    font-size: 18px;
 }
 
 #language {
@@ -99,8 +98,6 @@ window#waybar.hidden {
     transition: none;
     color: #ffffff;
     background: #1a1623;
-    font-family: CascadiaCove;
-    font-size: 16px;
 }
 
 #keyboard-state {
@@ -110,27 +107,30 @@ window#waybar.hidden {
     transition: none;
     color: #ffffff;
     background: #1a1623;
-    font-family: CascadiaCove;
-    font-size: 16px;
 }
 
-#battery {
+#custom-battery {
+    min-width: 60px;
     padding-left: 8px;
     padding-right: 0px;
     border-radius: 0px 8px 8px 0px;
     transition: none;
     color: #ffffff;
     background: #1a1623;
+    font-family: Ricty;
+    font-size: 16px;
 }
 
 #pulseaudio {
-    min-width: 50px;
+    min-width: 70px;
     padding-right: 0px;
     padding-left: 8px;
-    border-radius: 0px 0px 0px 0px;
+    border-radius: 8px 0px 0px 8px;
     transition: none;
     color: #ffffff;
     background: #1a1623;
+    font-family: Ricty;
+    font-size: 16px;
 }
       '';
   };

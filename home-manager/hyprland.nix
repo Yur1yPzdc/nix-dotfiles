@@ -114,7 +114,7 @@
         "swww-daemon"
         "sh ../bg/bg.sh"
         "waybar"
-        "sh ../scripts/wifi/run.sh"
+        "sh ../scripts/wifi/proxy.sh"
       ];
 
       bind = [
