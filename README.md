@@ -1,5 +1,13 @@
 # ❄️ Yur1yPzdc' NixOS Config
 
+## 📝 Info
+
+- Bash shortcuts:
++ `rebuild = sudo nixos-rebuild switch --flake $HOME/nixos-config`
++ `hmswitch = home-manager switch --flake $HOME/nixos-config`
++ `v, vi, vim = nvim`
+- Config size ~20G with no extra packages
+
 ## 🚀 Installation
 
 To get started with this setup, follow these steps:
