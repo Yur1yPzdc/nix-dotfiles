@@ -2,7 +2,7 @@
 
 values=(1 2 3 4 5 5 6 7 8 9)
 
-f="$HOME/nixos-config/bg/.last_img"
+f="$HOME/nixos-config/bg/last_img"
 read -n1 l < "$f"
 
 v=$(( $l + 1 ))
@@ -14,7 +14,7 @@ echo $v $l
 
 ask="$HOME/nixos-config/bg/$v.png"
 
-cat > $HOME/nixos-config/bg/.last_img << EOF1
+cat > $HOME/nixos-config/bg/last_img << EOF1
 $v
 EOF1
 
