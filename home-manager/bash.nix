@@ -2,7 +2,7 @@
   programs.bash = {
     enable = true;
     shellAliases = {
-      rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config";
+      rebuild = "doas nixos-rebuild switch --flake ~/nixos-config";
       hmswitch = "home-manager switch --flake ~/nixos-config";
       v = "nvim";
       vi = "nvim";
