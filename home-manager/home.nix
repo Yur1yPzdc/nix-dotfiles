@@ -9,6 +9,7 @@
     packages = with pkgs; [
       telegram-desktop
       litemdview
+      dorion
     ];
   };
 
