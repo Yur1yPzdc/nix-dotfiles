@@ -114,7 +114,7 @@
         "swww-daemon"
         "sh ../bg/bg.sh"
         "waybar"
-        "sh ../scripts/wifi/proxy.sh"
+        "sh /home/yuri/nixos-config/scripts/wifi/proxy.sh"
       ];
 
       bind = [
