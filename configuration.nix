@@ -7,7 +7,7 @@
       ./nixvim/nixvim.nix
     ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" "pipe-operators" ];
 
   # Boot loader stuff
   boot.loader = {
@@ -76,21 +76,21 @@
     home-manager
 
     # For programming & stuff
-    rustup
+    # rustup                 # Should be used in nix-shell
     rust-analyzer
-    gcc
+    # gcc                    # Should be used in nix-shell
     # python3
     # texliveFull
     # texlivePackages.babel-russian
     # asymptote
-    # git # Configured in ./home-manager
+    # git                    # Configured in ./home-manager
 
     # Uilities & stuff
     brightnessctl
-    # waybar # Configured in ./home-manager and flake.nix
-    eww
+    # waybar                 # Configured in ./home-manager and flake.nix
+    # eww
     swww
-    # alacritty # Configured in ./home-manager
+    # alacritty              # Configured in ./home-manager
     ffmpeg
     pamixer
     ripgrep
@@ -107,8 +107,8 @@
     # Desktop apps
     xfce.thunar
     kdePackages.okular
-    # firefox # Configured in ./home-manager
-    # telegram-desktop # Enabled in ./home-manager
+    # firefox                # Configured in ./home-manager
+    # telegram-desktop       # Enabled in ./home-manager
     # discordo
     # libresprite
     # urn-timer
@@ -151,10 +151,15 @@
   # User-related stuff
   users.users.yuri = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "input" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "doas" "wheel" "networkmanager" "input" ]; # Enable ‘sudo’ for the user.
   };
   services.getty.autologinUser = "yuri";
 
+  # SUDO replacement
+  security.doas = {
+    enable = true;
+    extraRules = [ { groups = [ "doas" ]; persist = true; } ];
+  };
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
