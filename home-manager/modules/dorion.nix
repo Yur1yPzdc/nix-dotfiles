@@ -14,7 +14,7 @@ let
       };
     in base // lib.attrsets.removeAttrs settings [ "zoom" "themes" "push_to_talk_keys" "client_mods" "keybinds" ];
 
-  configFile = pkgs.writeText "config.json" (builtins.toJSON (prepareSettings cfg.settings));
+  hmConfigFile = pkgs.writeText "config.json" (builtins.toJSON (prepareSettings cfg.settings));
 in
 {
   options.programs.dorion = {
@@ -90,7 +90,7 @@ in
             default = "default";
           };
           proxy_uri = lib.mkOption {
-            type = lib.types.bool;
+            type = lib.types.str;
             default = "";
           };
           push_to_talk = lib.mkOption {
@@ -182,7 +182,29 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [ cfg.package ];
-    xdg.configFile."dorion/config.json".source = configFile;
-  };
-}
+    home.packages = [ 
+      # cfg.package
+      (pkgs.writeShellScriptBin "Dorion" 
+      ''
+        # Paths
+        CONFIG_DIR="$HOME/.config/dorion"
+        RUNTIME_CFG="$CONFIG_DIR/config.json"  # What Dorion expects
+        HM_CFG="$CONFIG_DIR/hm-config.json"    # Home Manager's config
+
+        # Ensure directory exists
+        mkdir -p "$CONFIG_DIR"
+
+        # Replace runtime config with home-manager config
+        rm -f "$RUNTIME_CFG"
+        cp "$HM_CFG" "$RUNTIME_CFG"
+        chmod +w "$RUNTIME_CFG" 2>/dev/null || true
+
+        # Run Dorion with enabled manual per-session changes
+        exec ${cfg.package}/bin/Dorion
+      ''
+      )
+    ];
+
+    xdg.configFile."dorion/hm-config.json".source = hmConfigFile;
+    };
+  }
