@@ -5,6 +5,7 @@
     [ # Include the results of the hardware scan.
       ./hardware_configuration.nix
       ./nixvim/nixvim.nix
+      ./configuration-modules/networking.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" "pipe-operators" ];
@@ -22,21 +23,16 @@
     timeout = null;
   };
 
+  # Latest kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Disks-related stuff
   services.devmon.enable = true;  
   services.gvfs.enable = true; 
   services.udisks2.enable = true;
 
-  # Internet and bluetooth stuff
-  networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless = {
-    enable = true;  # Enables wireless support via wpa_supplicant.
-    interfaces = [ "wlp60s0" ];
-    networks."INTERNET_WIRLESS_5G" = {
-      psk = "9139442042";
-    };
-  };
-  hardware.bluetooth.enable = true;
+  # Power-management stuff
+  powerManagement.enable = false;
 
   # Sound stuff
   services.pipewire = {
@@ -77,7 +73,7 @@
 
     # For programming & stuff
     # rustup                 # Should be used in nix-shell
-    rust-analyzer
+    # rust-analyzer          # Should be used in nix-shell
     # gcc                    # Should be used in nix-shell
     # python3
     # texliveFull
@@ -97,6 +93,7 @@
     fd
     zram-generator
     hyprpicker
+    hyprshot
 
     # Fun & rice
     fastfetch
@@ -152,14 +149,28 @@
   users.users.yuri = {
     isNormalUser = true;
     extraGroups = [ "doas" "wheel" "networkmanager" "input" ]; # Enable ‘sudo’ for the user.
+    hashedPassword = "$y$j9T$M.dAcUpes1Rh7tVraEQca/$IFu7LTUzd70aYT1/4YQZNB2tPRYhprSjj4EeoEk21B4";
   };
   services.getty.autologinUser = "yuri";
 
   # SUDO replacement
-  security.doas = {
-    enable = true;
-    extraRules = [ { groups = [ "doas" ]; persist = true; } ];
-  };
+  # security.doas = {
+  #   enable = true;
+  #   extraRules = [
+  #     {
+  #       users = [ "yuri" ];
+  #       # groups = [ "doas" ];
+  #       persist = true; 
+  #       keepEnv = true; 
+  #       setEnv = [ 
+  #       # Force-set $HOME and $USER to your user
+  #         "HOME=/home/yuri"
+  #         "USER=yuri"
+  #       ]; 
+  #     } 
+  #   ];
+  # };
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
@@ -199,7 +210,8 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 
 }
+
 
