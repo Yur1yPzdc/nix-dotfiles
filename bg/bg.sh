@@ -9,7 +9,7 @@ if [[ ! -f "$file" || -z "$current" || ! "$current" =~ ^[0-9]+$ ]]; then
 else 
   current=$((current + 1))
 
-  if [[ "$current" -gt 14 ]]; then
+  if [[ "$current" -gt 16 ]]; then
     current=1
   fi
 fi
