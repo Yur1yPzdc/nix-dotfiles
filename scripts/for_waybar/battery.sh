@@ -8,16 +8,16 @@ if [ -d "/sys/class/power_supply/BAT0" ]; then
       echo "󱊦 $cap%" 
       ;;
     "Discharging")
-      echo "󰂍 $cap%"
+      echo "󰂌 $cap%"
       ;;
     "Full")
-      echo "󰁹$cap%"
+      echo "󰁹 $cap%"
       ;;
     "Unknown")
-      echo "󰂑$cap%" 
+      echo "󰂑 $cap%" 
       ;;
     *)
-      echo "󰁿$cap%" 
+      echo "󰁿 $cap%" 
       ;;
   esac 
 else

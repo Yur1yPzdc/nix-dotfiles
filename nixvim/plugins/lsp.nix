@@ -11,7 +11,6 @@
       enable = true;
       highlightDefinitions = {
         enable = true;
-        # Set to false if you have an `updatetime` of ~100.
         clearOnCursorMove = false;
       };
     };
@@ -23,7 +22,6 @@
       servers = {
         rust_analyzer = {
           enable = true;
-          autostart = true;
           installRustc = false;
           installCargo = false;
           settings = {
@@ -36,12 +34,18 @@
  
         clangd = {
           enable = true;
-          autostart = true;
-          # filetypes = ["*.c" "*.cpp"];
+          settings = {
+            filetypes = [ "c" "cpp" ];
+            root_markers = [ "compile_commands.json" "compile_flags.txt" ];
+          };
         };
 
         nixd = {
           enable = true;
+        };
+
+        nil_ls = {
+          enable = false;
         };
 
         slint_lsp = {

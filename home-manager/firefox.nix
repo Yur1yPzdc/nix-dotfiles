@@ -66,7 +66,6 @@
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
           tabliss
-          tranquility-1
           auto-tab-discard
           betterttv
           seventv

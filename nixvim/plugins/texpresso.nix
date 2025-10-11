@@ -1,5 +1,5 @@
 {
   programs.nixvim.plugins.texpresso = {
-    enable = true;
+    enable = false;
   };
 }

@@ -5,9 +5,10 @@
     [ # Include the results of the hardware scan.
       ./hardware_configuration.nix
       ./nixvim/nixvim.nix
+      ./configuration-modules/networking.nix
     ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" "pipe-operators" ];
 
   # Boot loader stuff
   boot.loader = {
@@ -22,21 +23,16 @@
     timeout = null;
   };
 
+  # Latest kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Disks-related stuff
   services.devmon.enable = true;  
   services.gvfs.enable = true; 
   services.udisks2.enable = true;
 
-  # Internet and bluetooth stuff
-  networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless = {
-    enable = true;  # Enables wireless support via wpa_supplicant.
-    interfaces = [ "wlp60s0" ];
-    networks."INTERNET_WIRLESS_5G" = {
-      psk = "9139442042";
-    };
-  };
-  hardware.bluetooth.enable = true;
+  # Power-management stuff
+  powerManagement.enable = false;
 
   # Sound stuff
   services.pipewire = {
@@ -76,27 +72,28 @@
     home-manager
 
     # For programming & stuff
-    rustup
-    rust-analyzer
-    gcc
+    # rustup                 # Should be used in nix-shell
+    # rust-analyzer          # Should be used in nix-shell
+    # gcc                    # Should be used in nix-shell
     # python3
     # texliveFull
     # texlivePackages.babel-russian
     # asymptote
-    # git # Configured in ./home-manager
+    # git                    # Configured in ./home-manager
 
     # Uilities & stuff
     brightnessctl
-    # waybar # Configured in ./home-manager and flake.nix
-    eww
+    # waybar                 # Configured in ./home-manager and flake.nix
+    # eww
     swww
-    # alacritty # Configured in ./home-manager
+    # alacritty              # Configured in ./home-manager
     ffmpeg
     pamixer
     ripgrep
     fd
     zram-generator
     hyprpicker
+    hyprshot
 
     # Fun & rice
     fastfetch
@@ -107,8 +104,8 @@
     # Desktop apps
     xfce.thunar
     kdePackages.okular
-    # firefox # Configured in ./home-manager
-    # telegram-desktop # Enabled in ./home-manager
+    # firefox                # Configured in ./home-manager
+    # telegram-desktop       # Enabled in ./home-manager
     # discordo
     # libresprite
     # urn-timer
@@ -151,9 +148,28 @@
   # User-related stuff
   users.users.yuri = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "input" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "doas" "wheel" "networkmanager" "input" ]; # Enable ‘sudo’ for the user.
+    hashedPassword = "$y$j9T$M.dAcUpes1Rh7tVraEQca/$IFu7LTUzd70aYT1/4YQZNB2tPRYhprSjj4EeoEk21B4";
   };
   services.getty.autologinUser = "yuri";
+
+  # SUDO replacement
+  # security.doas = {
+  #   enable = true;
+  #   extraRules = [
+  #     {
+  #       users = [ "yuri" ];
+  #       # groups = [ "doas" ];
+  #       persist = true; 
+  #       keepEnv = true; 
+  #       setEnv = [ 
+  #       # Force-set $HOME and $USER to your user
+  #         "HOME=/home/yuri"
+  #         "USER=yuri"
+  #       ]; 
+  #     } 
+  #   ];
+  # };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -194,7 +210,8 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 
 }
+
 

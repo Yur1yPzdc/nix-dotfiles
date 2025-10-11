@@ -33,6 +33,8 @@
           "<M-v>" = ":Neotree close<CR>";
           "<M-a>" = ":AerialToggle<CR>";
           "<leader>cc" = ":!cargo check<CR>";
+          "<M-h>" = ":bprevious<CR>";
+          "<M-l>" = ":bnext<CR>";
           
         };
       in

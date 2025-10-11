@@ -1,21 +1,19 @@
 #!/bin/bash
 
-values=(1 2 3 4 5 5 6 7 8 9)
+file="/home/yuri/nixos-config/bg/last_img"
 
-f="$HOME/nixos-config/bg/.last_img"
-read -n1 l < "$f"
+current=$(cat "$file" 2>/dev/null)
 
-v=$(( $l + 1 ))
+if [[ ! -f "$file" || -z "$current" || ! "$current" =~ ^[0-9]+$ ]]; then
+  current=1
+else 
+  current=$((current + 1))
 
-if [ "$v" -eq "10" ]; then
-  v=1
+  if [[ "$current" -gt 16 ]]; then
+    current=1
+  fi
 fi
-echo $v $l
 
-ask="$HOME/nixos-config/bg/$v.png"
+echo "$current" > "$file"
 
-cat > $HOME/nixos-config/bg/.last_img << EOF1
-$v
-EOF1
-
-swww img --transition-type fade --transition-duration 2.0 --transition-bezier .42,0,1,1 $ask 
+swww img --transition-type fade --transition-duration 2.0 --transition-bezier .42,0,1,1 "/home/yuri/nixos-config/bg/${current}.png" 
