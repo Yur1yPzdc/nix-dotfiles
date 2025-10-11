@@ -3,3 +3,4 @@ bg/last_img
 scripts/wifi/ciadpi
 secrets/*
 secrets/wifi-secrets-file
+scripts/wifi/wpa_supplicant.conf
