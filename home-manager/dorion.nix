@@ -2,6 +2,7 @@
   programs.dorion = {
     enable = false;
     settings = {
+      desktop_notifications = false;
       push_to_talk = true;
       proxy_uri = "socks5://127.0.0.1:1080";
       zoom = 0.8;

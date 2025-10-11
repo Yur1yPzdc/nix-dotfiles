@@ -148,12 +148,12 @@ in
 
           tray_icon_enabled = lib.mkOption {
             type = lib.types.bool;
-            default = true;
+            default = false;
           };
 
           unread_badge = lib.mkOption {
             type = lib.types.bool;
-            default = true;
+            default = false;
           };
 
           update_notify = lib.mkOption {
@@ -199,8 +199,7 @@ in
         cp "$HM_CFG" "$RUNTIME_CFG"
         chmod +w "$RUNTIME_CFG" 2>/dev/null || true
 
-        # Run Dorion with enabled manual per-session changes
-        exec ${cfg.package}/bin/Dorion
+        exec ${cfg.package}/bin/Dorion "$@"
       ''
       )
     ];
