@@ -14,9 +14,11 @@
   boot.loader = {
     grub = {
       enable = true;
+      version = 2;
       efiSupport = true;
       device = "nodev";
       useOSProber = true;
+      splashImage = ./bg/grub-bg.png;
     };
     efi.canTouchEfiVariables = true;
     efi.efiSysMountPoint = "/boot";
