@@ -39,7 +39,7 @@
         };
 
         "clock" = {
-          timezone = "Asia/Novosibirsk";
+          timezone = "Europe/Moscow";
           locale = "ja_JP.utf8";
           format = "{:L%a・%d日%B・%H:%M}";
           tooltip = false;
