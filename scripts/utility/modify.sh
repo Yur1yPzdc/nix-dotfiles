@@ -43,4 +43,8 @@ echo "5. Your stateVersion:"
 read sv
 sed -i "s/system.stateVersion = .*/system.stateVersion = \"$sv\"; # Did you read the comment?/" ../../configuration.nix
 
+echo "6. Your wifi interface (ip link command tells it; better call it in tty2)"
+read wi
+sed -i "s/interfaces = .*/interfaces = [ \"$wi\" ];/" ../../configuration.nix
+
 echo "Customization process finished"
