@@ -17,7 +17,6 @@
         "AQ_DRM_DEVICES, /dev/dri/card1:/dev/dri/card0"
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
-        "XDG_SESSION_DESKTOP,Hyprland"
         "XCURSOR_SIZE,24"
         "QT_QPA_PLATFORM,wayland"
         "XDG_SCREENSHOTS_DIR,~/screens"
@@ -48,8 +47,8 @@
       };
 
       general = {
-        gaps_in = 5;
-        gaps_out = 10;
+        gaps_in = 4;
+        gaps_out = 8;
         border_size = 3;
         "col.active_border" = "rgba(7a4ff4ee) rgba(e681caee) -60deg";
         "col.inactive_border" = "rgba(a257fbaa)";
@@ -95,8 +94,8 @@
       };
 
       gestures = {
-        workspace_swipe = true;
-        workspace_swipe_fingers = 3;
+        # workspace_swipe = true;
+        # workspace_swipe_fingers = 3;
         workspace_swipe_invert = false;
         workspace_swipe_distance = 200;
         workspace_swipe_forever = true;
@@ -112,9 +111,8 @@
 
       exec-once = [
         "swww-daemon"
-        "sh ../bg/bg.sh"
+        "sh /home/yuri/nixos-config/bg/bg.sh"
         "waybar"
-        "sh /home/yuri/nixos-config/scripts/wifi/proxy.sh"
       ];
 
       bind = [
@@ -132,6 +130,7 @@
         "$mainMod, P, exec, hyprpicker"
         "$mainMod, J, togglesplit, # dwindle"
         "$mainMod, T, exec, Telegram"
+        "$mainMod, S, exec, hyprshot -s -m output DP-1"
 
         # Move focus with mainMod + arrow keys
         "$secMod, H, movefocus, l"
