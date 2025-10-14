@@ -39,8 +39,6 @@ To get started with this setup, follow these steps:
 3.2 **Modified user, directory naming, updating stateVersion, etc…**
 - `cd nixos-config/scripts/utility` and `sh modify.sh`
 
-3.5 **Remember to:**
-- Create user password as root either imperatively (booo!) `passwd username` or run `mkpasswd <your password> >> nixos-config/configuration.nix`, open `configuration.nix`, edit last line to look like `hashedPassword = "<that line>";` and move it right under `extraGroups = [ "wheel" "networkmanager" "input" ];` 
 
 ## 🤝 Contributions
 🎨 If you have stumbled upon great artwork that can be used as a wallpaper, i.e. following theme, feel free to recommend adding it into this config
