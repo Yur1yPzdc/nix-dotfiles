@@ -14,7 +14,6 @@
   boot.loader = {
     grub = {
       enable = true;
-      version = 2;
       efiSupport = true;
       device = "nodev";
       useOSProber = true;
@@ -27,6 +26,37 @@
 
   # Latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # Other nvidia driver stuff
+
+  # Disable X11 entirely
+  services.xserver.enable = false;
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  # Enable NVIDIA proprietary driver
+  hardware.nvidia = {
+    open = false;
+    modesetting.enable = true;  # Required for Wayland
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;  # gives `nvidia-offload`
+      };
+      intelBusId = "PCI:0:2:0";   # Intel iGPU
+      nvidiaBusId = "PCI:1:0:0";  # NVIDIA dGPU
+    };
+  };
+
+  # Blacklist nouveau
+  boot.kernelParams = [ "modprobe.blacklist=nouveau" ];
+  boot.extraModprobeConfig = "blacklist nouveau";
+
+  # Enable general graphics support (needed for Vulkan, etc.)
+  hardware.graphics = {
+    enable = true;
+  };
 
   # Disks-related stuff
   services.devmon.enable = true;  
@@ -79,6 +109,7 @@
     # gcc                    # Should be used in nix-shell
     # python3
     # texliveFull
+    # texliveMedium
     # texlivePackages.babel-russian
     # asymptote
     # git                    # Configured in ./home-manager
@@ -127,7 +158,6 @@
 
   # Hyprland stuff
   programs.hyprland.enable = true;
-  hardware.graphics.enable = true;
 
   # Updating packages 
   system.autoUpgrade = {
@@ -154,24 +184,6 @@
     hashedPassword = "$y$j9T$M.dAcUpes1Rh7tVraEQca/$IFu7LTUzd70aYT1/4YQZNB2tPRYhprSjj4EeoEk21B4";
   };
   services.getty.autologinUser = "yuri";
-
-  # SUDO replacement
-  # security.doas = {
-  #   enable = true;
-  #   extraRules = [
-  #     {
-  #       users = [ "yuri" ];
-  #       # groups = [ "doas" ];
-  #       persist = true; 
-  #       keepEnv = true; 
-  #       setEnv = [ 
-  #       # Force-set $HOME and $USER to your user
-  #         "HOME=/home/yuri"
-  #         "USER=yuri"
-  #       ]; 
-  #     } 
-  #   ];
-  # };
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
