@@ -1,5 +1,5 @@
 hardware-configuration.nix
-bg/last_img
+last_img
 scripts/wifi/ciadpi
 secrets/*
 secrets/wifi-secrets-file
