@@ -99,6 +99,7 @@ window#waybar.hidden {
     transition: none;
     color: #ffffff;
     background: #1a1623;
+    font-family: JetbrainsMono;
 }
 
 #keyboard-state {
