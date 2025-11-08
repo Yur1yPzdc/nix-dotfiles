@@ -7,13 +7,16 @@
     enable = true;  # Enables wireless support via wpa_supplicant.
     secretsFile = "/home/yuri/nixos-config/secrets/wifi-secrets-file";
     interfaces = [ "wlp60s0" ];
+    driver = "wext,nl80211";
     networks = {
       INTERNET_WIRLESS_5G.pskRaw = "ext:psk_home";
       Redmi8.pskRaw = "ext:psk_mobile";
       Moscow_WiFi_Free.pskRaw = null;
       bmstu_wifi = {
-        hidden = false;
         auth = ''
+          scan_ssid=1
+          proto=WPA2
+          pairwise=CCMP
           key_mgmt=WPA-EAP
           eap=PEAP
           identity="ext:log_bmstu"
