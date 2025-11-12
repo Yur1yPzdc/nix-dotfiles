@@ -1,0 +1,25 @@
+name: NixOS Flake Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  check-nixos-config:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v14
+
+      - name: Check flake syntax and lock file
+        run: nix flake check --print-build-logs
+
+      - name: Build NixOS configuration
+        run: |
+          # Замени 'nixos' на имя своей системы внутри nixosConfigurations
+          nix build .#nixosConfigurations.nixos.config.system.build.toplevel --print-build-logs
