@@ -5,7 +5,7 @@ echo "========================="
 
 echo "1. Your user name:"
 read username
-for FILE in ../../configuration.nix ../../home-manager/home.nix ../../home-manager/hyprland.nix ../../flake.nix ../../bg/bg.sh ../../home-manager/waybar.nix; do
+for FILE in ../../configuration.nix  ../../configuration-modules/networking.nix../../home-manager/home.nix ../../home-manager/hyprland.nix ../../flake.nix ../../bg/bg.sh ../../home-manager/waybar.nix; do
   if [ -f "$FILE" ]; then
     sed -i "s/yuri/$username/g" "$FILE"
   else
@@ -15,7 +15,7 @@ done
 
 echo "2. Your config directory name:"
 read dirname
-for FILE in ../../configuration.nix ../../bg/bg.sh ../../home-manager/bash.nix ../../home-manager/hyprland.nix ../../home-manager/waybar.nix; do
+for FILE in ../../configuration.nix ../../configuration-modules/networking.nix ../../bg/bg.sh ../../home-manager/bash.nix ../../home-manager/hyprland.nix ../../home-manager/waybar.nix; do
   if [ -f "$FILE" ]; then
     sed -i "s/nixos-config/$dirname/g" "$FILE"
   else
@@ -45,6 +45,6 @@ sed -i "s/system.stateVersion = .*/system.stateVersion = \"$sv\"; # Did you read
 
 echo "6. Your wifi interface (ip link command tells it; better call it in tty2)"
 read wi
-sed -i "s/interfaces = .*/interfaces = [ \"$wi\" ];/" ../../configuration.nix
+sed -i "s/interfaces = .*/interfaces = [ \"$wi\" ];/" ../../configuration-modules/networking.nix
 
 echo "Customization process finished"
