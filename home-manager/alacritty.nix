@@ -1,5 +1,4 @@
 {
-
   imports = [ ./alacritty-tokyo-night.nix ];
 
   programs.alacritty = {

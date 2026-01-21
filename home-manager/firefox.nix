@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.firefox = {
@@ -22,11 +22,6 @@
       "DisplayBookmarksToolbar" = "always"; # alternatives: "always" or "newtab"
       "DisplayMenuBar" = "default-off"; # alternatives: "always", "never" or "default-on"
       "SearchBar" = "unified"; # alternative: "separate"
-      "Proxy" = {
-        "Mode" = "manual";
-        "SOCKSVersion" = 5;
-        "SOCKSProxy" = "127.0.0.1:1080";
-      };
       "SkipTermsOfUse" = true;
       "InstallAddonsPermission"."Default" = true;
     };
@@ -41,7 +36,7 @@
           "extensions.install_origins.enabled" = false; 
           "extensions.autoDisableScopes" = 0; # These 2 are for automatic enabling of extensions
           "services.sync.prefs.sync.extensions.activeThemeID" = false; # Dont change theme on other devices
-          "browser.migrate.chrome.extensions.enabled" = false; # Remove startup popup          "browser.search.order.1" = "google";
+          "browser.migrate.chrome.extensions.enabled" = false; # Remove startup popup  
         };
         search = {
           force = true;
@@ -56,7 +51,6 @@
                   { name = "query"; value = "{searchTerms}"; }
                 ];
               }];
-              #icon = "''${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               icon = "https://upload.wikimedia.org/wikipedia/commons/2/28/Nix_snowflake.svg";
               definedAliases = [ "@np" ];
             };
@@ -69,6 +63,7 @@
           auto-tab-discard
           betterttv
           seventv
+          copy-n-paste
         ];
       };
     };

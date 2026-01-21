@@ -7,7 +7,6 @@
       v = "nvim";
       vi = "nvim";
       vim = "nvim";
-      wifi = "sh ~/nixos-config/scripts/wifi/wifi.sh";
     };
   };
 }
