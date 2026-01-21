@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ...}: {
+{ config, lib, ...}: {
 
   imports = [
     ./plugins/bundle.nix
@@ -19,8 +19,6 @@
       };
     };
 
-    plugins.nix.enable = true;
-
     keymaps = let 
       normal = 
         lib.mapAttrsToList
@@ -29,13 +27,10 @@
           inherit action key;
         })
         {
-          "<M-c>" = ":Neotree<CR>";
-          "<M-v>" = ":Neotree close<CR>";
-          "<M-a>" = ":AerialToggle<CR>";
-          "<leader>cc" = ":!cargo check<CR>";
-          "<M-h>" = ":bprevious<CR>";
-          "<M-l>" = ":bnext<CR>";
-          
+          "<M-c>"        = ":Neotree<CR>";
+          "<M-v>"        = ":Neotree close<CR>";
+          "<M-a>"        = ":AerialToggle<CR>";
+          "<leader>cc"   = ":!cargo check<CR>";
         };
       in
       config.lib.nixvim.keymaps.mkKeymaps

@@ -7,7 +7,6 @@
     ./lsp.nix
     ./lualine.nix
     ./neotree.nix
-    ./nix.nix
     ./opts.nix
     ./surround.nix
     ./telescope.nix

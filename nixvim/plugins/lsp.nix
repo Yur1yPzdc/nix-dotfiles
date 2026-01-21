@@ -3,17 +3,16 @@
     treesitter = {
       enable = true;
       nixvimInjections = true;
-      folding = true;
       settings.indent.enable = true;
     };
  
-    treesitter-refactor = {
-      enable = true;
-      highlightDefinitions = {
-        enable = true;
-        clearOnCursorMove = false;
-      };
-    };
+    # treesitter-refactor = {
+    #   enable = true;
+    #   highlightDefinitions = {
+    #     enable = true;
+    #     clearOnCursorMove = false;
+    #   };
+    # };
  
     lsp = {
       enable = true;

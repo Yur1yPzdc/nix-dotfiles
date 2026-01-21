@@ -1,4 +1,58 @@
 let 
+  tabsss = 
+  ''
+function()
+  local result = {}
+  
+  for i = 1, vim.fn.tabpagenr("$") do
+    local buflist = vim.fn.tabpagebuflist(i)
+    local winnr = vim.fn.tabpagewinnr(i)
+    local bufnr = buflist[winnr]
+    local bufname = vim.fn.bufname(bufnr)
+    
+    -- Get filename
+    local filename = vim.fn.fnamemodify(bufname, ":t")
+    filename = filename == "" and "[No Name]" or filename
+    local extension = vim.fn.fnamemodify(filename, ":e")
+    local icon = require'nvim-web-devicons'.get_icon(filename, extension)
+    icon = icon == "nil" and "" or icon
+    
+    -- Check modified
+    local modified = ""
+    for _, b in ipairs(buflist) do
+      if vim.api.nvim_buf_get_option(b, "modified") then
+        modified = "[+]"
+        break
+      end
+    end
+    
+    -- Window count
+    local window_count = #buflist
+    local is_active = i == vim.fn.tabpagenr()
+    local is_larger = i > vim.fn.tabpagenr()
+    local is_smaller_special = i < vim.fn.tabpagenr() - 1
+    
+    -- Build clickable tab
+    local tab_content = string.format("%d:%s %s %s(%d) ", i, icon, filename, modified, window_count)
+    local clickable_tab = string.format("%%%dT%s%%T", i, tab_content)
+    
+    if is_active then
+      table.insert(result, "%#CTabA#" .. clickable_tab .. "%#CTabI#%#TabLine#")
+    else
+      if is_larger or is_smaller_special then
+        table.insert(result, "%#CTabI#" .. clickable_tab .. "%#CTabI#%#TabLineFill#")
+      else
+        table.insert(result, "%#CTabI#" .. clickable_tab .. "%#CTabA#%#TabLineFill#")
+      end
+    end
+  end
+  
+  -- Fill the rest
+  table.insert(result, "%#TabLineFill#%T%=")
+  
+  return table.concat(result, "")
+end 
+    '';
   cond_50 = 
   ''
     function()
@@ -17,6 +71,7 @@ let
     return vim.fn.winwidth(0) > 100
     end
   '';
+
 in
 {
   programs.nixvim.plugins.lualine = {
@@ -24,6 +79,7 @@ in
     autoLoad = true;
     settings = {
       options = {
+        # Where to not appear
         disabled_filetypes = {
           __unkeyed-1 = [
           ];
@@ -68,41 +124,45 @@ in
           fg = "#698bd3";
         };
       };
+
       sections = {
+        # Empty for better positioning
         lualine_a = [
           ""
         ];
         lualine_b = [
           ""
         ];
+
         lualine_c = [
-          {
+          
+          { # Vim mode
             __unkeyed-1 = {
               __raw = 
               ''
                 'mode',
                 color = function()
                   local mode_color = {
-                    n = '#ec5f67',
-                    i = '#98be65',
-                    v = '#51afef',
-                    [''] = '#51afef',
-                    V = '#51afef',
-                    c = '#c678dd',
-                    no = '#ec5f67',
-                    s = '#FF8800',
-                    S = '#FF8800',
-                    [''] = '#FF8800',
-                    ic = '#ecbe7b',
-                    R = '#a9a1e1',
-                    Rv = '#a9a1e1',
-                    cv = '#ec5f67',
-                    ce = '#ec5f67',
-                    r = '#008080',
-                    rm = '#008080',
-                    ['r?'] = '#008080',
-                    ['!'] = '#ec5f67',
-                    t = '#ec5f67',
+                    n = '#ec5f67',      -- NORMAL 
+                    i = '#98be65',      -- INSERT 
+                    v = '#51afef',      -- VISUAL 
+                    [''] = '#51afef', -- VISUAL BLOCK
+                    V = '#51afef',      -- VISUAL LINE 
+                    c = '#c678dd',      -- COMMAND 
+                    no = '#ec5f67',     -- WAITING OPERATOR 
+                    s = '#FF8800',      -- SELECT 
+                    S = '#FF8800',      -- SELECT LINE 
+                    [''] = '#FF8800', -- SELECT BLOCK 
+                    ic = '#ecbe7b',     --  
+                    R = '#a9a1e1',      -- REPLACE 
+                    Rv = '#a9a1e1',     -- VIRTUAL REPLACE 
+                    cv = '#ec5f67',     --  
+                    ce = '#ec5f67',     --  
+                    r = '#008080',      --  
+                    rm = '#008080',     --  
+                    ['r?'] = '#008080', --  
+                    ['!'] = '#ec5f67',  -- EXTERNAL !command
+                    t = '#ec5f67',      -- TERMINAL 
                   }
                   return { fg = mode_color[vim.fn.mode()], bg = '#15161e', gui = 'bold' }
                 end
@@ -110,7 +170,8 @@ in
             };
             icon = "";
           }
-          {
+          
+          { # Filesize
             __unkeyed-2 = "filesize";
             color.fg = "#bbc2cf";
             color.bg = "#15161e";
@@ -118,13 +179,14 @@ in
             cond.__raw = cond_80;
           }
           
-          {
+          { # Location
             __unkeyed-2 = "location";
             color.fg = "#bbc2cf";
             color.bg = "#15161e";
             color.gui = "bold";
           }
-          {
+          
+          { # Progress
             __unkeyed-2 = "progress";
             color.fg = "#bbc2cf";
             color.bg = "#15161e";
@@ -133,7 +195,8 @@ in
           }
         ];
         lualine_x = [
-          {
+          
+          { # Working LSP
             __unkeyed-1 = {
               __raw = 
               ''
@@ -162,32 +225,10 @@ in
             icon = " LSP: ";
             cond.__raw = cond_80;
           }
+          # Offset for better positioning
           "%="
-          # {
-          #   __unkeyed-1 = "encoding";
-          #   color.fg = "#98be65";
-          #   color.bg = "#1a1b26";
-          #   color.gui = "bold";
-          #   cond.__raw = 
-          #   ''
-          #     function()
-          #       return vim.fn.winwidth(0) > 80
-          #     end
-          #   '';
-          # }
-          # {
-          #   __unkeyed-1 = "fileformat";
-          #   color.fg = "#98be65";
-          #   color.bg = "#1a1b26";
-          #   color.gui = "bold";
-          #   cond.__raw = 
-          #   ''
-          #     function()
-          #       return vim.fn.winwidth(0) > 80
-          #     end
-          #   '';
-          # }
-          {
+          
+          { # Git branchname
             __unkeyed-1 = "branch";
             color.fg = "#a9a1e1";
             color.bg = "#15161e";
@@ -199,20 +240,11 @@ in
                   return #str > max_length and str:sub(1, max_length - 1) .. "…" or str
                 end
             '';
-            #fmt.__raw = 
-            #''
-            #  function(branch_name)
-            #    local max_length = 15
-            #    if #branch_name > max_length and vim.fn.winwidth(0) < 51 then
-            #      return string.sub(branch_name, 1, max_length) .. '…'
-            #    end
-            #    return branch_name
-            #  end
-            #'';
             cond.__raw = cond_50;
             icon = "";
           }
-          {
+          
+          { # Difference
             __unkeyed-1 = "diff";
             symbols = {
               added = " ";
@@ -220,14 +252,14 @@ in
               removed = " ";
             };
             diff_color = {
-              added.fg = "#98be65";
               modified.fg = "#ff8800";
               removed.fg = "#ec5f67";
             };
             color.bg = "#15161e";
             cond.__raw = cond_50;
           }
-          {
+          
+          { # Warnings, errors from LSP
             __unkeyed-1 = "diagnostics";
             color.bg = "#15161e";
             cond.__raw = cond_100;
@@ -243,17 +275,19 @@ in
       };
       tabline = {
         lualine_a = [
+          # Tabs
           {
-            __unkeyed-1 = "buffers";
+            # __unkeyed-1 = "tabs";
+            __unkeyed-1.__raw = tabsss;
             symbols.alternate_file = ""; 
           }
         ];
-        lualine_x = [
+        # Filename + its access options
+        lualine_x = [ 
           {
             __unkeyed-2 = "filename";
             color.fg = "#c568dd";
             color.bg = "#15161e";
-            # color.gui = "light";
             cond.__raw = cond_100;
             newfile_status = true;
             path = 1;

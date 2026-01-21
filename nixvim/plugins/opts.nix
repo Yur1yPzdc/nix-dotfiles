@@ -13,6 +13,9 @@
       number = true; # Display the absolute line number of the current line
 
       hidden = true; # Keep closed buffer open in the background
+      
+      showmode = false;
+      tabline = "hidden";
 
       mouse = "a"; # Enable mouse control
       mousemodel = "extend"; # Mouse right-click extends the current selection
@@ -61,5 +64,12 @@
 
       completeopt = ["menu" "menuone" "noselect"]; # For CMP plugin
     };
+    
+    extraConfigVim = 
+    ''
+      " Custom highlights
+      hi CTabA guifg=#15161e guibg=#698bd3
+      hi CTabI guifg=#698bd3 guibg=#15161e 
+    '';
   };
 }
