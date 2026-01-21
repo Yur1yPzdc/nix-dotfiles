@@ -1,8 +1,8 @@
-{ inputs, config, lib, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware_configuration.nix
       ./nixvim/nixvim.nix
       ./configuration-modules/networking.nix
@@ -38,7 +38,6 @@
     open = false;
     modesetting.enable = true;  # Required for Wayland
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-
     prime = {
       offload = {
         enable = true;
@@ -96,7 +95,7 @@
     powerline-symbols
     nerd-fonts.caskaydia-cove
     # Japanese cool fonts
-    ipaexfont
+    # ipaexfont
     ricty
   ];
   environment.systemPackages = with pkgs; [
@@ -117,7 +116,6 @@
     # Uilities & stuff
     brightnessctl
     # waybar                 # Configured in ./home-manager and flake.nix
-    # eww
     swww
     # alacritty              # Configured in ./home-manager
     ffmpeg
@@ -139,25 +137,13 @@
     kdePackages.okular
     # firefox                # Configured in ./home-manager
     # telegram-desktop       # Enabled in ./home-manager
-    # discordo
-    # libresprite
-    # urn-timer
-    # obs-studio
-    # vlc
-    # gimp
-    # libsForQt5.kdenlive
 
-    # Gaming (Not needed)
-    # gnugo
-    # libsForQt5.kigo
-    # retroarchFull
-
-    # Custom cursor???
+    # Custom cursor
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
 
   # Hyprland stuff
-  programs.hyprland.enable = true;
+  # programs.hyprland.enable = true;
 
   # Updating packages 
   system.autoUpgrade = {
@@ -172,7 +158,7 @@
 
   # Garbage collection
   nix.gc = {
-    automatic = true;
+    automatic = false;
     dates = "weekly";
     options = "--delete-older-than 14d";
   };
