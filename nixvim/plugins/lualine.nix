@@ -15,7 +15,7 @@ function()
     filename = filename == "" and "[No Name]" or filename
     local extension = vim.fn.fnamemodify(filename, ":e")
     local icon = require'nvim-web-devicons'.get_icon(filename, extension)
-    icon = icon == "nil" and "" or icon
+    icon = icon == nil and "" or icon
     
     -- Check modified
     local modified = ""

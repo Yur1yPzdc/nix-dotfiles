@@ -12,7 +12,7 @@
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     rose-pine-hyprcursor = {
@@ -21,7 +21,7 @@
     };
   };
  
-  outputs = { self, nixpkgs, home-manager, nixvim, nur, ... } @inputs: {
+  outputs = { self, nixpkgs, home-manager, nixvim, nur, rose-pine-hyprcursor, ... } @inputs: {
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";

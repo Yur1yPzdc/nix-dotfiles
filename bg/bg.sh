@@ -16,4 +16,4 @@ fi
 
 echo "$current" > "$file"
 
-swww img --transition-type fade --transition-duration 2.0 --transition-bezier .42,0,1,1 "/home/yuri/nixos-config/bg/${current}.png" 
+awww img --transition-type fade --transition-duration 2.0 --transition-bezier .42,0,1,1 "/home/yuri/nixos-config/bg/${current}.png" 

@@ -1,5 +1,5 @@
 {
   programs.nixvim.plugins.vimtex = {
-    enable = true;
+    enable = false;
   };
 }

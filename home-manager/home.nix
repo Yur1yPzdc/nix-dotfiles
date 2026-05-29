@@ -16,7 +16,7 @@
     homeDirectory = "/home/yuri";
     stateVersion = "25.05";
     packages = with pkgs; [
-      telegram-desktop
+      # telegram-desktop
     ];
   };
 }

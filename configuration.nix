@@ -1,11 +1,11 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 {
   imports =
     [
       ./hardware_configuration.nix
       ./nixvim/nixvim.nix
-      ./configuration-modules/networking.nix
+      ./modules/networking.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" "pipe-operators" ];
@@ -25,19 +25,22 @@
   };
 
   # Latest kernel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelModules = [ "i915" "nvidia" "nvidia_drm" ];
+  boot.kernelParams = [ "nvidia-drm.modeset=1" ];
 
-  # Other nvidia driver stuff
+  # # Other nvidia driver stuff
 
-  # Disable X11 entirely
-  services.xserver.enable = false;
-  services.xserver.videoDrivers = [ "nvidia" ];
+  # # Disable X11 entirely
+  # services.xserver.enable = false;
+  services.seatd.enable = true;
 
   # Enable NVIDIA proprietary driver
   hardware.nvidia = {
     open = false;
     modesetting.enable = true;  # Required for Wayland
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_535;
+    nvidiaSettings = true;
     prime = {
       offload = {
         enable = true;
@@ -48,14 +51,19 @@
     };
   };
 
-  # Blacklist nouveau
-  boot.kernelParams = [ "modprobe.blacklist=nouveau" ];
-  boot.extraModprobeConfig = "blacklist nouveau";
+  environment.sessionVariables = {
+    WLR_DRM_DEVICES = "/dev/dri/card0";
+    WLR_RENDERER_ALLOW_SOFTWARE = "0";
+  };
+
+  # # Blacklist nouveau
+  # boot.kernelParams = [ "modprobe.blacklist=nouveau" ];
+  # boot.extraModprobeConfig = "blacklist nouveau";
 
   # Enable general graphics support (needed for Vulkan, etc.)
-  hardware.graphics = {
-    enable = true;
-  };
+  # hardware.graphics = {
+  #   enable = true;
+  # };
 
   # Disks-related stuff
   services.devmon.enable = true;  
@@ -63,7 +71,7 @@
   services.udisks2.enable = true;
 
   # Power-management stuff
-  powerManagement.enable = false;
+  powerManagement.enable = true;
 
   # Sound stuff
   services.pipewire = {
@@ -95,7 +103,7 @@
     powerline-symbols
     nerd-fonts.caskaydia-cove
     # Japanese cool fonts
-    # ipaexfont
+    ipaexfont
     ricty
   ];
   environment.systemPackages = with pkgs; [
@@ -107,7 +115,7 @@
     # rust-analyzer          # Should be used in nix-shell
     # gcc                    # Should be used in nix-shell
     # python3
-    # texliveFull
+    # texliveFull            # Should be used in nix-shell
     # texliveMedium
     # texlivePackages.babel-russian
     # asymptote
@@ -116,7 +124,7 @@
     # Uilities & stuff
     brightnessctl
     # waybar                 # Configured in ./home-manager and flake.nix
-    swww
+    awww
     # alacritty              # Configured in ./home-manager
     ffmpeg
     pamixer
@@ -133,13 +141,13 @@
     cmatrix
 
     # Desktop apps
-    xfce.thunar
+    thunar
     kdePackages.okular
     # firefox                # Configured in ./home-manager
     # telegram-desktop       # Enabled in ./home-manager
 
     # Custom cursor
-    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+    inputs.rose-pine-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Hyprland stuff
@@ -147,7 +155,7 @@
 
   # Updating packages 
   system.autoUpgrade = {
-    enable = true;
+    enable = false;
     flake = "path:/home/yuri/nixos-config";
     flags = [
       "--recreate-lock-file"
@@ -166,7 +174,7 @@
   # User-related stuff
   users.users.yuri = {
     isNormalUser = true;
-    extraGroups = [ "doas" "wheel" "networkmanager" "input" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "render" "input" "seat" "video" ]; # Enable ‘sudo’ for the user.
     hashedPassword = "$y$j9T$M.dAcUpes1Rh7tVraEQca/$IFu7LTUzd70aYT1/4YQZNB2tPRYhprSjj4EeoEk21B4";
   };
   services.getty.autologinUser = "yuri";

@@ -12,8 +12,8 @@
         modules-right = [ "pulseaudio" "custom/battery" ];
 
         "hyprland/language" = {
-          format-en = "Nya ฅ^•ﻌ•^ฅ ";
-          format-ru = "Няя ฅ^•ﻌ•^ฅ ";
+          format-en = "Nya ∩^•ﻌ•^∩ ";
+          format-ru = "Няя ∩^•ﻌ•^∩ ";
           min-length = 12;
           tooltip = false;
         };
@@ -99,7 +99,7 @@ window#waybar.hidden {
     transition: none;
     color: #ffffff;
     background: #1a1623;
-    font-family: JetbrainsMono;
+    font-family: Jetbrains Mono;
 }
 
 #keyboard-state {

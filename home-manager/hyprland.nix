@@ -14,7 +14,7 @@
       monitor = ",preferred,auto,1";
 
       env = [
-        "AQ_DRM_DEVICES, /dev/dri/card1:/dev/dri/card0"
+        # "AQ_DRM_DEVICES, /dev/dri/card0:/dev/dri/card1"
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
         "XCURSOR_SIZE,24"
@@ -110,7 +110,7 @@
       };
 
       exec-once = [
-        "swww-daemon"
+        "awww-daemon"
         "sh /home/yuri/nixos-config/bg/bg.sh"
         "waybar"
       ];
@@ -123,7 +123,7 @@
         "$secMod,  T, exec, alacritty"
         "$secMod,  Q, killactive,"
         "$secMod,  F, exec, firefox"
-        "$secMod,  D, exec, rofi -show drun"
+        # "$secMod,  D, exec, rofi -show drun"
         "$secMod,  B, exec, sh $HOME/nixos-config/bg/bg.sh"
         "$mainMod, E, exec, thunar"
         "$mainMod, F, togglefloating,"
