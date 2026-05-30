@@ -4,7 +4,7 @@
   imports =
     [
       ./hardware_configuration.nix
-      ./nixvim/nixvim.nix
+      ./nixvim/nixvim2.nix
       ./modules/networking.nix
     ];
 
