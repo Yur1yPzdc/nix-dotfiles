@@ -111,7 +111,7 @@
     # telegram-desktop       # Enabled in ./home-manager
 
     # Custom cursor
-    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+    inputs.rose-pine-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Hyprland stuff
