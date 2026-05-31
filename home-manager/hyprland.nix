@@ -2,6 +2,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
+    configType = "hyprlang";
     # configType = "lua"; # cant migrate so far
 
     xwayland = {
