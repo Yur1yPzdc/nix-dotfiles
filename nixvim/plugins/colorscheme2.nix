@@ -1,14 +1,12 @@
 {
   programs.nixvim.colorschemes = {
     kanagawa = {
+      settings.theme = "dragon";
       enable = true;
-      theme = "dragon";
     };
 
-    melange-nvim.enable = true;
-
-    colorschemes.tokyonight = {
-      enable = true;
+    tokyonight = {
+      enable = false;
       settings.style = "night";
     };
   };

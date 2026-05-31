@@ -1,9 +1,5 @@
 { config, lib, ...}: {
 
-  imports = [
-    ./plugins/bundle2.nix
-  ];
-
   programs.nixvim = {
     enable = true;
 
@@ -27,6 +23,9 @@
       config.lib.nixvim.keymaps.mkKeymaps
         {options.silent = true;}
         (normal);
-    
   };
+
+  imports = [
+    ./plugins/bundle2.nix
+  ];
 }

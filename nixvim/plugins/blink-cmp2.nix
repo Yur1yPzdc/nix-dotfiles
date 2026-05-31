@@ -33,7 +33,7 @@
           preset = 'inherit',
           ['<CR>'] = { 'accept_and_enter', 'fallback' },
         },
-      },
+      }
     ";
   };
 }

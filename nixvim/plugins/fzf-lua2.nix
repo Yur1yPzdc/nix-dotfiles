@@ -1,9 +1,14 @@
 {
   programs.nixvim.plugins.fzf-lua = { 
     enable = true;
+    lazyLoad.enable = false;
+    autoload = true;
+    profile = "skim";
     keymaps = {
       "<leader><leader>" = "files";
       "<leader>lg" = "live_grep";
+      "<leader>ol" = "oldfiles";
+      "<leader>bf" = "buffers";
     };
     settings = {
       winopts.backdrop = 85;
@@ -19,14 +24,6 @@
           "ctrl-g" = "last";
           "ctrl-d" = "half-page-down";
           "ctrl-u" = "half-page-up";
-        };
-      };
-      actions = {
-        files = {
-          "ctrl-q" = "file_sel_to_qf";
-          "ctrl-n" = "toggle_ignore";
-          "ctrl-h" = "toggle_hidden";
-          "enter" = "file_edit_or_qf";
         };
       };
     };
