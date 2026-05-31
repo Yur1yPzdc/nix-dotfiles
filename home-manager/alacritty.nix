@@ -1,5 +1,5 @@
 {
-  imports = [ ./alacritty-tokyo-night.nix ];
+  imports = [ ./alacritty-kanagawa.nix ];
 
   programs.alacritty = {
     enable = true;

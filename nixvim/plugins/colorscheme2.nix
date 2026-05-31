@@ -2,6 +2,7 @@
   programs.nixvim.colorschemes = {
     kanagawa = {
       settings.theme = "dragon";
+      settings.background.dark = "dragon";
       enable = true;
     };
 
