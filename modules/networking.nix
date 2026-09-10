@@ -1,6 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
+  environment.systemPackages = with pkgs; [ wirelesstools ];
+  services.resolved.enable = true;
+
   hardware.bluetooth.enable = true;
   networking.hostName = "nixos"; # Define your hostname.
   networking.wireless = {
