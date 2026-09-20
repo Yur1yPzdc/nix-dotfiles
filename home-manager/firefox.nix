@@ -60,8 +60,8 @@
         };
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
-          tabliss
-          auto-tab-discard
+          tablissng
+          # auto-tab-discard
           # betterttv
           # seventv
           # copy-n-paste

@@ -7,7 +7,9 @@
     ./bash.nix 
     ./firefox.nix
     ./git.nix
-    ./hyprland.nix
+    # ./hyprland.nix
+    ./hyprlandLua.nix
+    ./throne.nix
     ./waybar.nix
   ];
   
@@ -17,6 +19,7 @@
     stateVersion = "25.11";
     packages = with pkgs; [
       # telegram-desktop
+      # v2raya
     ];
   };
 }
