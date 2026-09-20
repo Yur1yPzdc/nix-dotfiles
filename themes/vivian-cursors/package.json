@@ -1,0 +1,8 @@
+{
+  "name": "vivian-cursors",
+  "version": "1.2.0",
+  "private": true,
+  "description": "Vivian Banshee fan-art cursor theme for Hyprcursor and XCursor",
+  "scripts": {"build": "node scripts/build.cjs && python3 scripts/pack.py"},
+  "dependencies": {"sharp": "^0.34.0"}
+}

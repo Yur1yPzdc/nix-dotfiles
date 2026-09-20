@@ -1,0 +1,8 @@
+/node_modules/
+/result
+/result-*
+/work/
+.DS_Store
+__pycache__/
+
+# Both theme folders, source folders, assets and flake.lock are release inputs.

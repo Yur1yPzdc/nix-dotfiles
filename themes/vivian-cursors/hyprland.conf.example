@@ -1,0 +1,6 @@
+# For Hyprland versions using hyprland.conf (Hyprlang).
+# Merge these lines into your existing config.
+env = HYPRCURSOR_THEME,Vivian
+env = HYPRCURSOR_SIZE,64
+env = XCURSOR_THEME,Vivian
+env = XCURSOR_SIZE,64

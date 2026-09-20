@@ -1,0 +1,9 @@
+resize_algorithm = bilinear
+hotspot_x = 0.25
+hotspot_y = 0.046875
+define_override = zoom_out
+define_size = 32, 32-00.png, 1000
+define_size = 48, 48-00.png, 1000
+define_size = 64, 64-00.png, 1000
+define_size = 96, 96-00.png, 1000
+define_size = 128, 128-00.png, 1000

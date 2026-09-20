@@ -1,0 +1,6 @@
+-- For Hyprland versions using hyprland.lua.
+-- Merge these lines into your existing config.
+hl.env("HYPRCURSOR_THEME", "Vivian")
+hl.env("HYPRCURSOR_SIZE", "64")
+hl.env("XCURSOR_THEME", "Vivian")
+hl.env("XCURSOR_SIZE", "64")

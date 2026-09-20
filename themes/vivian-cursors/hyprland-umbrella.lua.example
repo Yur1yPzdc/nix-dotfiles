@@ -1,0 +1,5 @@
+-- Select the compact open-umbrella variant.
+hl.env("HYPRCURSOR_THEME", "Vivian_umbrella")
+hl.env("HYPRCURSOR_SIZE", "64")
+hl.env("XCURSOR_THEME", "Vivian_umbrella")
+hl.env("XCURSOR_SIZE", "64")

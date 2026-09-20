@@ -1,0 +1,9 @@
+# Artwork record
+
+Created with the built-in image-generation tool, not the API/CLI fallback. The original RGBA image is preserved in `assets/vivian-atlas.png`. Cursor assembly crops the four atlas cells, scales them, and places functional SVG cursor symbols alongside them. The character artwork is not redrawn by the build scripts.
+
+## Generation prompt
+
+Use case: stylized-concept. Asset type: transparent desktop cursor character sprite atlas. Create ONE sprite atlas showing chibi Vivian Banshee from Zenless Zone Zero, in her original outfit: long wavy light lavender hair with darker purple inner strands, red eyes, small dark hair ornaments, white puff sleeve blouse, black fitted bodice, layered purple skirt, black stockings and dark shoes, holding her elegant violet parasol above and slightly to her right. Cute compact 2.5-head-tall full body, clean dark plum outlines, very simplified crisp shapes for legibility at 48 pixels, flat cel colors, no complex texture. The atlas contains exactly FOUR animation frames in a SINGLE HORIZONTAL ROW, four equal square cells, each character same size, same fixed feet baseline, same centered position, fully contained with generous transparent margin. Frame 1 relaxed looking toward viewer, frame 2 identical but hair and skirt sway just slightly, frame 3 identical to frame 1 but eyes gently closed in a blink, frame 4 identical to frame 1 with eyes open. Preserve character identity and clothing consistently in all frames. The parasol is compact and held close so silhouette fits a square. Genuine transparent RGBA background, no checkerboard drawn in, no shadows outside sprite, no labels, no text, no cursor arrows or UI icons, no borders. This is functional source art for an animated Linux cursor theme, not a mockup. Output wide landscape atlas.
+
+The returned atlas is 2172 × 724 pixels, so its four cells are rectangular. The build preserves their proportions and fits each into a square cursor canvas.

@@ -1,0 +1,10 @@
+resize_algorithm = bilinear
+hotspot_x = 0.15625
+hotspot_y = 0.15625
+define_override = split_h
+define_override = 043a9f68147c53184671403ffa811cc5
+define_size = 32, 32-00.png, 1000
+define_size = 48, 48-00.png, 1000
+define_size = 64, 64-00.png, 1000
+define_size = 96, 96-00.png, 1000
+define_size = 128, 128-00.png, 1000
