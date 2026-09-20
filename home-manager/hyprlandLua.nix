@@ -25,6 +25,7 @@
       hl.env("QT_QPA_PLATFORM", "wayland")
       hl.env("XDG_SCREENSHOTS_DIR", os.getenv("HOME") .. "/screens")
       hl.env("HYPRCURSOR_THEME", "rose-pine-hyprcursor")
+      hl.env("HYPRCURSOR_SIZE", 24)
       -- hl.env("HYPRCURSOR_THEME", "Vivian_umbrella")
       -- hl.env("HYPRCURSOR_SIZE", 48)
 
