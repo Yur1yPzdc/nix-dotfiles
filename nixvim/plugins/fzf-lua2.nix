@@ -1,8 +1,10 @@
 {
   programs.nixvim.plugins.fzf-lua = { 
     enable = true;
+    # lazyLoad.enable = true;
     lazyLoad.enable = false;
-    autoload = true;
+    lazyLoad.settings.cmd = "FzfLua";
+    # autoload = true;
     profile = "skim";
     keymaps = {
       "<leader><leader>" = "files";
