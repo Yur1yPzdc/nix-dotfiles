@@ -1,0 +1,12 @@
+resize_algorithm = bilinear
+hotspot_x = 0.15625
+hotspot_y = 0.15625
+define_override = forbidden
+define_override = crossed_circle
+define_override = circle
+define_override = 03b6e0fcb3499374a867c041f52298f0
+define_size = 32, 32-00.png, 1000
+define_size = 48, 48-00.png, 1000
+define_size = 64, 64-00.png, 1000
+define_size = 96, 96-00.png, 1000
+define_size = 128, 128-00.png, 1000

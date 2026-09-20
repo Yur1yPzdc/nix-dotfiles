@@ -2,6 +2,9 @@
   wayland.windowManager.hyprland = {
     enable = true;
 
+    configType = "hyprlang";
+    # configType = "lua"; # cant migrate so far
+
     xwayland = {
       enable = true;
       # force_zero_scaling = true;
@@ -84,7 +87,7 @@
       };
 
       dwindle = {
-        pseudotile = true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+        # pseudotile = true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
         preserve_split = true; # you probably want this
       };
 
@@ -110,7 +113,7 @@
       };
 
       exec-once = [
-        "swww-daemon"
+        "awww-daemon"
         "sh /home/yuri/nixos-config/bg/bg.sh"
         "waybar"
       ];
@@ -123,12 +126,12 @@
         "$secMod,  T, exec, alacritty"
         "$secMod,  Q, killactive,"
         "$secMod,  F, exec, firefox"
-        "$secMod,  D, exec, rofi -show drun"
+      # "$secMod,  D, exec, rofi -show drun"
         "$secMod,  B, exec, sh $HOME/nixos-config/bg/bg.sh"
         "$mainMod, E, exec, thunar"
         "$mainMod, F, togglefloating,"
         "$mainMod, P, exec, hyprpicker"
-        "$mainMod, J, togglesplit, # dwindle"
+      # "$mainMod, J, togglesplit, # dwindle"
         "$mainMod, T, exec, Telegram"
         "$mainMod, S, exec, hyprshot -s -m output DP-1"
 

@@ -44,7 +44,7 @@
           format = "{:L%a・%d日%B・%H:%M}";
           tooltip = false;
         };
-"custom/battery" = {
+        "custom/battery" = {
           format = "{}";
           return-type = "text";
           exec = "sh /home/yuri/nixos-config/scripts/for_waybar/battery.sh";

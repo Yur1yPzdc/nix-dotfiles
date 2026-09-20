@@ -1,11 +1,10 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports =
     [
       ./hardware_configuration.nix
-      ./nixvim/nixvim.nix
-      ./configuration-modules/networking.nix
+      ./modules/networking.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" "pipe-operators" ];
@@ -18,6 +17,7 @@
       device = "nodev";
       useOSProber = true;
       splashImage = ./bg/grub-bg.png;
+      configurationLimit = 3;
     };
     efi.canTouchEfiVariables = true;
     efi.efiSysMountPoint = "/boot";
@@ -26,36 +26,7 @@
 
   # Latest kernel
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # Other nvidia driver stuff
-
-  # Disable X11 entirely
-  services.xserver.enable = false;
-  services.xserver.videoDrivers = [ "nvidia" ];
-
-  # Enable NVIDIA proprietary driver
-  hardware.nvidia = {
-    open = false;
-    modesetting.enable = true;  # Required for Wayland
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-    prime = {
-      offload = {
-        enable = true;
-        enableOffloadCmd = true;  # gives `nvidia-offload`
-      };
-      intelBusId = "PCI:0:2:0";   # Intel iGPU
-      nvidiaBusId = "PCI:1:0:0";  # NVIDIA dGPU
-    };
-  };
-
-  # Blacklist nouveau
-  boot.kernelParams = [ "modprobe.blacklist=nouveau" ];
-  boot.extraModprobeConfig = "blacklist nouveau";
-
-  # Enable general graphics support (needed for Vulkan, etc.)
-  hardware.graphics = {
-    enable = true;
-  };
+  hardware.graphics.enable = true;
 
   # Disks-related stuff
   services.devmon.enable = true;  
@@ -94,6 +65,7 @@
     powerline-fonts
     powerline-symbols
     nerd-fonts.caskaydia-cove
+    hannom
     # Japanese cool fonts
     # ipaexfont
     ricty
@@ -116,7 +88,7 @@
     # Uilities & stuff
     brightnessctl
     # waybar                 # Configured in ./home-manager and flake.nix
-    swww
+    awww
     # alacritty              # Configured in ./home-manager
     ffmpeg
     pamixer
@@ -133,21 +105,27 @@
     cmatrix
 
     # Desktop apps
-    xfce.thunar
-    kdePackages.okular
+    # thunar
+    # kdePackages.okular
     # firefox                # Configured in ./home-manager
     # telegram-desktop       # Enabled in ./home-manager
 
     # Custom cursor
+<<<<<<< HEAD
+    inputs.rose-pine-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
+=======
+<<<<<<< Updated upstream
     inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+=======
+    inputs.rose-pine-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.vivian-cursors.packages.${pkgs.stdenv.hostPlatform.system}.default
+>>>>>>> Stashed changes
+>>>>>>> update
   ];
-
-  # Hyprland stuff
-  # programs.hyprland.enable = true;
 
   # Updating packages 
   system.autoUpgrade = {
-    enable = true;
+    enable = false;
     flake = "path:/home/yuri/nixos-config";
     flags = [
       "--recreate-lock-file"
@@ -166,8 +144,8 @@
   # User-related stuff
   users.users.yuri = {
     isNormalUser = true;
-    extraGroups = [ "doas" "wheel" "networkmanager" "input" ]; # Enable ‘sudo’ for the user.
-    hashedPassword = "$y$j9T$M.dAcUpes1Rh7tVraEQca/$IFu7LTUzd70aYT1/4YQZNB2tPRYhprSjj4EeoEk21B4";
+    extraGroups = [ "wheel" "wpa_supplicant" "networkmanager" "input" ]; # Enable ‘sudo’ for the user.
+    hashedPassword = "$y$j9T$SqVKxCN1B9iziSZOHtlXG/$M3XI3kO8Xd8srpiNZ6TndvhJvZs1Wqousxtr69PYjQ.";
   };
   services.getty.autologinUser = "yuri";
 
@@ -210,7 +188,7 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 
 }
 

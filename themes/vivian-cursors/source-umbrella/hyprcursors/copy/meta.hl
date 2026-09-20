@@ -1,0 +1,11 @@
+resize_algorithm = bilinear
+hotspot_x = 0.25
+hotspot_y = 0.046875
+define_override = dnd-copy
+define_override = 1081e37283d90000800003c07f3ef6bf
+define_override = 640fb0e74195791501fd1ed57b41487f
+define_size = 32, 32-00.png, 1000
+define_size = 48, 48-00.png, 1000
+define_size = 64, 64-00.png, 1000
+define_size = 96, 96-00.png, 1000
+define_size = 128, 128-00.png, 1000

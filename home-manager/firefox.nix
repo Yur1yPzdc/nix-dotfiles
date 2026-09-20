@@ -3,6 +3,7 @@
 {
   programs.firefox = {
     enable = true;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     policies = {
       "DisableTelemetry" = true;
       "DisableFirefoxStudies" = true;
@@ -59,11 +60,11 @@
         };
         extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
           ublock-origin
-          tabliss
-          auto-tab-discard
-          betterttv
-          seventv
-          copy-n-paste
+          tablissng
+          # auto-tab-discard
+          # betterttv
+          # seventv
+          # copy-n-paste
         ];
       };
     };

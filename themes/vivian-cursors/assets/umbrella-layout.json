@@ -1,0 +1,10 @@
+{
+  "atlasSize": [1254, 1254],
+  "note": "The actual row boundary is y=629, two pixels below the geometric midpoint; this retains the upper sprites' shoes and excludes them from the lower frames.",
+  "frames": [
+    { "left": 0, "top": 0, "width": 627, "height": 629 },
+    { "left": 627, "top": 0, "width": 627, "height": 629 },
+    { "left": 0, "top": 629, "width": 627, "height": 625 },
+    { "left": 627, "top": 629, "width": 627, "height": 625 }
+  ]
+}
