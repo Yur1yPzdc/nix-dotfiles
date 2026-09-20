@@ -1,8 +1,9 @@
 {
   # services.resolved.enable = true;# enabled in main networking
+  # services.sing-box.environment.ENABLE_DEPRECATED_LEGACY_DNS_SERVERS = "true";
 
   services.sing-box = {
-    enable = true;
+    enable = false;
     settings = {
       log.level = "warn";
 
@@ -10,7 +11,8 @@
         servers = [
           {
             tag = "remote";
-            address = "tls://1.1.1.1";
+            type = "tls";
+            server = "1.1.1.1";
             detour = "proxy";
           }
         ];
