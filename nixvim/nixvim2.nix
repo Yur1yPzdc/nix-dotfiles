@@ -25,6 +25,8 @@
         (normal);
   };
 
+  programs.nixvim.plugins.lz-n.enable = true;
+
   imports = [
     ./plugins/bundle2.nix
   ];

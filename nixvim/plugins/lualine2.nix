@@ -108,20 +108,20 @@ in
           right = "";
         };
         theme.normal.c = {
-          bg = "#15161e";
-          fg = "#698bd3";
+          bg = "#181616"; # Kanagawa Dragon bg
+          fg = "#7E9CD8"; # Kanagawa Dragon blue
         };
         theme.inactive.c = {
-          bg = "#15161e";
-          fg = "#698bd3";
+          bg = "#181616";
+          fg = "#7E9CD8";
         };
         theme.normal.a = {
-          bg = "#698bd3";
-          fg = "#15161e";
+          bg = "#7E9CD8";
+          fg = "#181616";
         };
         theme.inactive.a = {
-          bg = "#15161e";
-          fg = "#698bd3";
+          bg = "#181616";
+          fg = "#7E9CD8";
         };
       };
 
@@ -143,28 +143,28 @@ in
                 'mode',
                 color = function()
                   local mode_color = {
-                    n = '#ec5f67',      -- NORMAL 
-                    i = '#98be65',      -- INSERT 
-                    v = '#51afef',      -- VISUAL 
-                    [''] = '#51afef', -- VISUAL BLOCK
-                    V = '#51afef',      -- VISUAL LINE 
-                    c = '#c678dd',      -- COMMAND 
-                    no = '#ec5f67',     -- WAITING OPERATOR 
-                    s = '#FF8800',      -- SELECT 
-                    S = '#FF8800',      -- SELECT LINE 
-                    [''] = '#FF8800', -- SELECT BLOCK 
-                    ic = '#ecbe7b',     --  
-                    R = '#a9a1e1',      -- REPLACE 
-                    Rv = '#a9a1e1',     -- VIRTUAL REPLACE 
-                    cv = '#ec5f67',     --  
-                    ce = '#ec5f67',     --  
-                    r = '#008080',      --  
-                    rm = '#008080',     --  
-                    ['r?'] = '#008080', --  
-                    ['!'] = '#ec5f67',  -- EXTERNAL !command
-                    t = '#ec5f67',      -- TERMINAL 
+                    n = '#C4746E',      -- NORMAL (autumnRed)
+                    i = '#8A9A7B',      -- INSERT (autumnGreen)
+                    v = '#7E9CD8',      -- VISUAL (crystalBlue)
+                    [''] = '#7E9CD8', -- VISUAL BLOCK
+                    V = '#7E9CD8',      -- VISUAL LINE 
+                    c = '#957FB8',      -- COMMAND (oniViolet)
+                    no = '#C4746E',     -- WAITING OPERATOR 
+                    s = '#E6C384',      -- SELECT (karasuYellow)
+                    S = '#E6C384',      -- SELECT LINE 
+                    [''] = '#E6C384', -- SELECT BLOCK 
+                    ic = '#E6C384',     --  
+                    R = '#957FB8',      -- REPLACE 
+                    Rv = '#957FB8',     -- VIRTUAL REPLACE 
+                    cv = '#C4746E',     --  
+                    ce = '#C4746E',     --  
+                    r = '#7FB4CA',      -- (springBlue)
+                    rm = '#7FB4CA',     --  
+                    ['r?'] = '#7FB4CA', --  
+                    ['!'] = '#C4746E',  -- EXTERNAL !command
+                    t = '#C4746E',      -- TERMINAL 
                   }
-                  return { fg = mode_color[vim.fn.mode()], bg = '#15161e', gui = 'bold' }
+                  return { fg = mode_color[vim.fn.mode()], bg = '#181616', gui = 'bold' }
                 end
               '';
             };
@@ -173,23 +173,23 @@ in
           
           { # Filesize
             __unkeyed-2 = "filesize";
-            color.fg = "#bbc2cf";
-            color.bg = "#15161e";
+            color.fg = "#C5C9C5"; # fujiWhite
+            color.bg = "#181616";
             color.gui = "bold";
             cond.__raw = cond_80;
           }
           
           { # Location
             __unkeyed-2 = "location";
-            color.fg = "#bbc2cf";
-            color.bg = "#15161e";
+            color.fg = "#C5C9C5";
+            color.bg = "#181616";
             color.gui = "bold";
           }
           
           { # Progress
             __unkeyed-2 = "progress";
-            color.fg = "#bbc2cf";
-            color.bg = "#15161e";
+            color.fg = "#C5C9C5";
+            color.bg = "#181616";
             color.gui = "bold";
             cond.__raw = cond_80;
           }
@@ -218,8 +218,8 @@ in
               '';
             };
             color = {
-              fg = "#bbc2cf";
-              bg = "#15161e";
+              fg = "#C5C9C5";
+              bg = "#181616";
               gui = "bold";
             };
             icon = " LSP: ";
@@ -230,8 +230,8 @@ in
           
           { # Git branchname
             __unkeyed-1 = "branch";
-            color.fg = "#a9a1e1";
-            color.bg = "#15161e";
+            color.fg = "#957FB8"; # oniViolet
+            color.bg = "#181616";
             color.gui = "bold";
             fmt.__raw = 
             ''
@@ -252,16 +252,17 @@ in
               removed = " ";
             };
             diff_color = {
-              modified.fg = "#ff8800";
-              removed.fg = "#ec5f67";
+              added.fg = "#8A9A7B";    # autumnGreen
+              modified.fg = "#E6C384"; # karasuYellow
+              removed.fg = "#C4746E";  # autumnRed
             };
-            color.bg = "#15161e";
+            color.bg = "#181616";
             cond.__raw = cond_50;
           }
           
           { # Warnings, errors from LSP
             __unkeyed-1 = "diagnostics";
-            color.bg = "#15161e";
+            color.bg = "#181616";
             cond.__raw = cond_100;
             icon = "| ";
           }
@@ -286,8 +287,8 @@ in
         lualine_x = [ 
           {
             __unkeyed-2 = "filename";
-            color.fg = "#c568dd";
-            color.bg = "#15161e";
+            color.fg = "#957FB8"; # oniViolet
+            color.bg = "#181616";
             cond.__raw = cond_100;
             newfile_status = true;
             path = 1;
