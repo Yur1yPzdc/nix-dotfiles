@@ -17,6 +17,7 @@
       device = "nodev";
       useOSProber = true;
       splashImage = ./bg/grub-bg.png;
+      configurationLimit = 3;
     };
     efi.canTouchEfiVariables = true;
     efi.efiSysMountPoint = "/boot";
@@ -110,11 +111,17 @@
     # telegram-desktop       # Enabled in ./home-manager
 
     # Custom cursor
+<<<<<<< HEAD
     inputs.rose-pine-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
+=======
+<<<<<<< Updated upstream
+    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+=======
+    inputs.rose-pine-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.vivian-cursors.packages.${pkgs.stdenv.hostPlatform.system}.default
+>>>>>>> Stashed changes
+>>>>>>> update
   ];
-
-  # Hyprland stuff
-  # programs.hyprland.enable = true;
 
   # Updating packages 
   system.autoUpgrade = {
