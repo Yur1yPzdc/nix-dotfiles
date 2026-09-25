@@ -5,6 +5,8 @@
     [
       ./hardware_configuration.nix
       ./modules/networking.nix
+      ./modules/throne.nix
+      ./modules/dell-fans.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" "pipe-operators" ];
@@ -111,16 +113,8 @@
     # telegram-desktop       # Enabled in ./home-manager
 
     # Custom cursor
-<<<<<<< HEAD
-    inputs.rose-pine-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
-=======
-<<<<<<< Updated upstream
-    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-=======
     inputs.rose-pine-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.vivian-cursors.packages.${pkgs.stdenv.hostPlatform.system}.default
->>>>>>> Stashed changes
->>>>>>> update
   ];
 
   # Updating packages 

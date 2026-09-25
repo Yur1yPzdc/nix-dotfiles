@@ -4,7 +4,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
-    zapret-discord-youtube.url = "github:kartavkun/zapret-discord-youtube";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -20,9 +19,14 @@
       url = "github:ndom91/rose-pine-hyprcursor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    vivian-cursors = {
+      url = "path:./themes/vivian-cursors";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
  
-  outputs = { self, nixpkgs, home-manager, nixvim, nur, zapret-discord-youtube, ... } @inputs: {
+  outputs = { self, nixpkgs, home-manager, nixvim, nur, vivian-cursors, ... } @inputs: {
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -32,9 +36,6 @@
 
         nixvim.nixosModules.nixvim
         ./nixvim/nixvim2.nix
-
-        zapret-discord-youtube.nixosModules.withTestTools
-        ./modules/networking-test.nix
       ];
     };
   
