@@ -9,11 +9,11 @@
 
         modules-left = [ "hyprland/language" "keyboard-state" "custom/diskspace" ];
         modules-center = [ "clock" ];
-        modules-right = [ "pulseaudio" "custom/battery" ];
+        modules-right = [ "custom/temp" "pulseaudio" "custom/battery" ];
 
         "hyprland/language" = {
-          format-en = "Nya ฅ^•ﻌ•^ฅ ";
-          format-ru = "Няя ฅ^•ﻌ•^ฅ ";
+          format-en = "Nya ^•ﻌ•^ ";
+          format-ru = "Няя ^•ﻌ•^ ";
           min-length = 12;
           tooltip = false;
         };
@@ -44,11 +44,20 @@
           format = "{:L%a・%d日%B・%H:%M}";
           tooltip = false;
         };
+
         "custom/battery" = {
           format = "{}";
           return-type = "text";
           exec = "sh /home/yuri/nixos-config/scripts/for_waybar/battery.sh";
           interval = 10;
+          tooltip = false;
+        };
+
+        "custom/temp" = {
+          format = "  {}℃ ";
+          return-type = "text";
+          exec = "echo $(( $( cat /sys/class/thermal/thermal_zone8/temp ) / 1000 ))";
+          interval = 4;
           tooltip = false;
         };
 
@@ -135,11 +144,23 @@ window#waybar.hidden {
     font-size: 16px;
 }
 
+#custom-temp {
+    min-width: 50px;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-radius: 8px 0px 0px 8px;
+    transition: none;
+    color: #ffffff;
+    background: #1a1623;
+    font-family: Ricty;
+    font-size: 16px;
+}
+
 #pulseaudio {
     min-width: 60px;
     padding-right: 0px;
-    padding-left: 8px;
-    border-radius: 8px 0px 0px 8px;
+    padding-left: 0px;
+    border-radius: 0px 0px 0px 0px;
     transition: none;
     color: #ffffff;
     background: #1a1623;

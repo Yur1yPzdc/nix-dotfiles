@@ -9,7 +9,6 @@
     ./git.nix
     # ./hyprland.nix
     ./hyprlandLua.nix
-    ./throne.nix
     ./waybar.nix
   ];
   
@@ -18,7 +17,7 @@
     homeDirectory = "/home/yuri";
     stateVersion = "25.11";
     packages = with pkgs; [
-      # telegram-desktop
+      # ayugram-desktop
       # v2raya
     ];
   };

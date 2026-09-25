@@ -55,6 +55,13 @@
               icon = "https://upload.wikimedia.org/wikipedia/commons/2/28/Nix_snowflake.svg";
               definedAliases = [ "@np" ];
             };
+
+            # "Nixvim Plugins" = {
+            #   urls = [{
+            #     template = "https://nix-community.org";
+            # }];
+            # };
+
             "google".metaData.alias = "@g"; # builtin engines only support specifying one additional alias
           };
         };
