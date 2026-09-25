@@ -68,11 +68,17 @@
       completeopt = ["menu" "menuone" "noselect"]; # For CMP plugin
     };
     
+    # extraConfigVim = 
+    # ''
+    #   " Custom highlights
+    #   hi CTabA guifg=#15161e guibg=#698bd3
+    #   hi CTabI guifg=#698bd3 guibg=#15161e 
+    # '';
     extraConfigVim = 
     ''
       " Custom highlights
-      hi CTabA guifg=#15161e guibg=#698bd3
-      hi CTabI guifg=#698bd3 guibg=#15161e 
+      hi CTabA guifg=#16161d guibg=#8ba4b0
+      hi CTabI guifg=#8ba4b0 guibg=#2a2a37
     '';
   };
 }

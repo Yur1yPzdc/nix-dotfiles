@@ -1,6 +1,6 @@
 let
   tabsss =
-  ''
+    ''
 function()
   local result = {}
 
@@ -55,19 +55,19 @@ function()
 end
     '';
   cond_50 =
-  ''
+    ''
     function()
     return vim.fn.winwidth(0) > 50
     end
   '';
   cond_80 =
-  ''
+    ''
     function()
     return vim.fn.winwidth(0) > 80
     end
   '';
   cond_100 =
-  ''
+    ''
     function()
     return vim.fn.winwidth(0) > 100
     end
@@ -110,9 +110,9 @@ in
         };
         theme = let
           mode = accent: {
-            a = { fg = "#181616"; bg = accent; gui = "bold"; };
-            b = { fg = "#c5c9c5"; bg = "#282727"; };
-            c = { fg = "#c5c9c5"; bg = "#181616"; };
+            a = { fg = "#16161d"; bg = accent; gui = "bold"; };
+            b = { fg = "#c5c9c5"; bg = "#1c1c24"; };
+            c = { fg = "#c5c9c5"; bg = "#16161d"; };
           };
         in {
           normal = mode "#8ba4b0";
@@ -122,9 +122,9 @@ in
           command = mode "#c4b28a";
           terminal = mode "#8ea4a2";
           inactive = {
-            a = { fg = "#a6a69c"; bg = "#181616"; };
-            b = { fg = "#a6a69c"; bg = "#181616"; };
-            c = { fg = "#a6a69c"; bg = "#181616"; };
+            a = { fg = "#a6a69c"; bg = "#16161d"; };
+            b = { fg = "#a6a69c"; bg = "#16161d"; };
+            c = { fg = "#a6a69c"; bg = "#16161d"; };
           };
         };
       };
@@ -152,7 +152,7 @@ in
                 }
                 return {
                   fg = colors[vim.api.nvim_get_mode().mode:sub(1, 1)] or '#c5c9c5',
-                  bg = '#181616', gui = 'bold',
+                  bg = '#16161d', gui = 'bold',
                 }
               end
             '';
@@ -162,7 +162,7 @@ in
           { # Filesize
             __unkeyed-1 = "filesize";
             color.fg = "#c5c9c5";
-            color.bg = "#181616";
+            color.bg = "#16161d";
             color.gui = "bold";
             cond.__raw = cond_80;
           }
@@ -170,14 +170,14 @@ in
           { # Location
             __unkeyed-1 = "location";
             color.fg = "#c5c9c5";
-            color.bg = "#181616";
+            color.bg = "#16161d";
             color.gui = "bold";
           }
 
           { # Progress
             __unkeyed-1 = "progress";
             color.fg = "#c5c9c5";
-            color.bg = "#181616";
+            color.bg = "#16161d";
             color.gui = "bold";
             cond.__raw = cond_80;
           }
@@ -200,7 +200,7 @@ in
             };
             color = {
               fg = "#c5c9c5";
-              bg = "#181616";
+              bg = "#16161d";
               gui = "bold";
             };
             icon = " LSP: ";
@@ -212,7 +212,7 @@ in
           { # Git branchname
             __unkeyed-1 = "branch";
             color.fg = "#8992a7";
-            color.bg = "#181616";
+            color.bg = "#16161d";
             color.gui = "bold";
             fmt.__raw =
             ''
@@ -237,13 +237,13 @@ in
               modified.fg = "#b6927b";
               removed.fg = "#c4746e";
             };
-            color.bg = "#181616";
+            color.bg = "#16161d";
             cond.__raw = cond_50;
           }
 
           { # Warnings, errors from LSP
             __unkeyed-1 = "diagnostics";
-            color.bg = "#181616";
+            color.bg = "#16161d";
             cond.__raw = cond_100;
             icon = "| ";
             diagnostics_color = {
@@ -275,7 +275,7 @@ in
           {
             __unkeyed-1 = "filename";
             color.fg = "#a292a3";
-            color.bg = "#181616";
+            color.bg = "#16161d";
             cond.__raw = cond_100;
             newfile_status = true;
             path = 1;
